@@ -1,0 +1,7 @@
+<h1>Users#show</h1>
+<% if @user.name? %>
+  <p>Welcome <%= @user.name %></p>
+<% else %>
+  <p>Hi buddy !!! would you like to update your profil first?</p>
+<% end %>
+<%= render 'form' %>
