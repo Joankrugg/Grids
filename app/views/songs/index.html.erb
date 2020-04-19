@@ -1,0 +1,6 @@
+<h1>Songs index</h1>
+<% @songs.each do |s| %>
+  <%= link_to s do  %>
+    <%= s.title %>
+  <% end %>
+<% end %>
