@@ -18,7 +18,7 @@ class SongsController < ApplicationController
     @song.user = @user
     if
       @song.save
-      redirect_to songs_path
+      redirect_to song_path(@song)
     else
       render new
     end
