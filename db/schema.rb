@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_191429) do
+ActiveRecord::Schema.define(version: 2020_04_20_205642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,21 @@ ActiveRecord::Schema.define(version: 2020_04_20_191429) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "grids", force: :cascade do |t|
+    t.integer "number_of_boxes"
+    t.integer "location"
+    t.bigint "song_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["song_id"], name: "index_grids_on_song_id"
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "songs", force: :cascade do |t|
     t.string "title"
     t.string "youtube_link"
@@ -59,5 +74,6 @@ ActiveRecord::Schema.define(version: 2020_04_20_191429) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "grids", "songs"
   add_foreign_key "songs", "users"
 end

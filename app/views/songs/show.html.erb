@@ -1,2 +1,9 @@
 <%= @song.title %>
 <%= @song.youtube_link %>
+<%= link_to 'create a grid', new_song_grid_path(@song) %>
+
+<ul class="list-group">
+  <% @song.grids.each do |g| %>
+    <li class="list-group-item"><%= g.location %></li>
+  <% end %>
+</ul>

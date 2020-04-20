@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Section.create({ name: 'Intro' })
+Section.create({ name: 'Verse' })
+Section.create({ name: 'PreChorus' })
+Section.create({ name: 'Chorus' })
+Section.create({ name: 'Bridge' })
+Section.create({ name: 'Break' })
+Section.create({ name: 'Solo' })
+Section.create({ name: 'Outro' })
+  puts "      💥"
