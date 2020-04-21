@@ -1,0 +1,2 @@
+class MusicalScale < ApplicationRecord
+end

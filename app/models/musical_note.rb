@@ -1,0 +1,2 @@
+class MusicalNote < ApplicationRecord
+end
