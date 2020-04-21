@@ -1,3 +1,3 @@
 class Section < ApplicationRecord
-  belongs_to :song
+  has_many :grids
 end

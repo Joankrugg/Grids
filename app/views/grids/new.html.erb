@@ -1,4 +1,6 @@
 <%= simple_form_for [ @song, @grid ] do |f| %>
   <%= f.input :location %>
+  <%= f.input :number_of_boxes %>
+  <%= f.association :section %>
   <%= f.submit "Submit grid", class: "btn btn-primary" %>
 <% end %>
