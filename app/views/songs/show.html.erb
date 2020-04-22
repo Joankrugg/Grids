@@ -1,9 +1,32 @@
 <%= @song.title %>
 <%= @song.youtube_link %>
-<%= link_to 'create a grid', new_song_grid_path(@song) %>
+<% if @song.user == current_user %>
+  <%= link_to 'create a grid', new_song_grid_path(@song) %>
+<% end %>
 
-<ul class="list-group">
-  <% @song.grids.each do |g| %>
-    <li class="list-group-item"><%= g.location %></li>
-  <% end %>
-</ul>
+<div class='grid'>
+  <ul class="list-group">
+    <% @song.grids.each do |grid| %>
+      <% if grid.location.present? %>
+        <li class="list-group-item"><%= link_to grid.location, edit_song_grid_path(@song) %></li>
+      <% end %>
+      <% if grid.section.present? %>
+        <li class="list-group-item"><%= grid.section.name %></li>
+      <% end %>
+      <% if grid.number_of_boxes.present? %>
+        <div class="card-group">
+          <% grid.number_of_boxes.times do %>
+            <div class="card">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
