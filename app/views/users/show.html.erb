@@ -1,6 +1,7 @@
 <h1>User#show</h1>
 <% if @user.name? %>
   <p>Welcome <%= @user.name %></p>
+  <p><%= @user.email %>
 <% else %>
   <p>Hi buddy !!! would you like to update your profil first?</p>
 <% end %>

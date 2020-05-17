@@ -1,0 +1,4 @@
+<%= simple_form_for [@song, @box] do |f| %>
+  <%= f.association :type %>
+  <%= f.submit "Submit box", class: "btn btn-primary" %>
+<% end %>

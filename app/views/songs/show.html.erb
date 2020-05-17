@@ -1,32 +1,38 @@
-<%= @song.title %>
+<h1><%= @song.title %></h1>
+<br>
+
 <%= @song.youtube_link %>
+<br>
 <% if @song.user == current_user %>
   <%= link_to 'create a grid', new_song_grid_path(@song) %>
 <% end %>
 
-<div class='grid'>
-  <ul class="list-group">
-    <% @song.grids.each do |grid| %>
-      <% if grid.location.present? %>
-        <li class="list-group-item"><%= link_to grid.location, edit_song_grid_path(@song) %></li>
-      <% end %>
-      <% if grid.section.present? %>
-        <li class="list-group-item"><%= grid.section.name %></li>
-      <% end %>
-      <% if grid.number_of_boxes.present? %>
-        <div class="card-group">
-          <% grid.number_of_boxes.times do %>
-            <div class="card">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </div>
+<div class="container">
+  <% b = @song.grids.sort_by { |grid| grid[:location] } %>
+  <% b.each do |grid| %>
+    <div class="row">
+      <%=link_to edit_song_grid_path(@song) do %>
+        <div class='grid col-sm-12'>
+          <div class='grid-info'>
+            <% if grid.location.present? %>
+              <div class="list-group-item"><%= grid.location %></li>
+            <% end %>
+            <% if grid.section.present? %>
+              <div class="list-group-item"><%= grid.section.name %></li>
+            <% end %>
+            <% if grid.type.present? %>
+              <div class="list-group-item"><%= grid.type.name %></li>
+            <% end %>
+          </div>
+          <% if @song.user == current_user %>
+            <%= link_to 'create a box', new_song_box_path(@song) %>
           <% end %>
         </div>
       <% end %>
-    <% end %>
-  </ul>
+      <br>
+    </div>
+  <% end %>
 </div>
+
+
+

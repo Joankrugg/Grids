@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_185543) do
+ActiveRecord::Schema.define(version: 2020_05_17_111011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 2020_04_21_185543) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "boxes", force: :cascade do |t|
+    t.bigint "song_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["song_id"], name: "index_boxes_on_song_id"
+  end
+
   create_table "grids", force: :cascade do |t|
     t.integer "number_of_boxes"
     t.integer "location"
@@ -43,8 +50,10 @@ ActiveRecord::Schema.define(version: 2020_04_21_185543) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "section_id"
+    t.bigint "type_id"
     t.index ["section_id"], name: "index_grids_on_section_id"
     t.index ["song_id"], name: "index_grids_on_song_id"
+    t.index ["type_id"], name: "index_grids_on_type_id"
   end
 
   create_table "musical_notes", force: :cascade do |t|
@@ -74,6 +83,12 @@ ActiveRecord::Schema.define(version: 2020_04_21_185543) do
     t.index ["user_id"], name: "index_songs_on_user_id"
   end
 
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -88,7 +103,9 @@ ActiveRecord::Schema.define(version: 2020_04_21_185543) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "boxes", "songs"
   add_foreign_key "grids", "sections"
   add_foreign_key "grids", "songs"
+  add_foreign_key "grids", "types"
   add_foreign_key "songs", "users"
 end
