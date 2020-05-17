@@ -24,9 +24,6 @@
               <div class="list-group-item"><%= grid.type.name %></li>
             <% end %>
           </div>
-          <% if @song.user == current_user %>
-            <%= link_to 'create a box', new_song_box_path(@song) %>
-          <% end %>
         </div>
       <% end %>
       <br>
