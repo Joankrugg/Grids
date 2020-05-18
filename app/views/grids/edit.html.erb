@@ -1,6 +1,1 @@
-<%= simple_form_for [@song, @grid ] do |f| %>
-  <%= f.association :section %>
-  <%= f.input :location, collection: 1...8 %>
-  <%= f.association :type %>
-  <%= f.submit "Submit grid", class: "btn btn-primary" %>
-<% end %>
+<%= render 'form' %>

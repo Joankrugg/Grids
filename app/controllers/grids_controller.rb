@@ -43,6 +43,6 @@ class GridsController < ApplicationController
   end
 
   def grid_params
-    params.require(:grid).permit(:location, :song_id, :section_id, :type_id)
+    params.require(:grid).permit(:location, :song_id, :section_id, :type_id, :grid_location, :musical_note_id, :musical_scale_id)
   end
 end
