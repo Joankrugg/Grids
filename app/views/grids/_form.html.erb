@@ -5,5 +5,6 @@
   <%= f.input :grid_location, collection: 1...8 %>
   <%= f.association :musical_note %>
   <%= f.association :musical_scale %>
+  <%= f.association :second_musical_note %>
   <%= f.submit "Submit grid", class: "btn btn-primary" %>
 <% end %>

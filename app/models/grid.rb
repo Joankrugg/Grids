@@ -4,4 +4,5 @@ class Grid < ApplicationRecord
   belongs_to :type
   belongs_to :musical_note
   belongs_to :musical_scale
+  belongs_to :second_musical_note
 end
