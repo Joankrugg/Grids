@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_18_191626) do
+ActiveRecord::Schema.define(version: 2020_05_18_195203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,9 +54,11 @@ ActiveRecord::Schema.define(version: 2020_05_18_191626) do
     t.bigint "musical_note_id"
     t.bigint "musical_scale_id"
     t.bigint "second_musical_note_id"
+    t.bigint "second_musical_scale_id"
     t.index ["musical_note_id"], name: "index_grids_on_musical_note_id"
     t.index ["musical_scale_id"], name: "index_grids_on_musical_scale_id"
     t.index ["second_musical_note_id"], name: "index_grids_on_second_musical_note_id"
+    t.index ["second_musical_scale_id"], name: "index_grids_on_second_musical_scale_id"
     t.index ["section_id"], name: "index_grids_on_section_id"
     t.index ["song_id"], name: "index_grids_on_song_id"
     t.index ["type_id"], name: "index_grids_on_type_id"
@@ -75,6 +77,12 @@ ActiveRecord::Schema.define(version: 2020_05_18_191626) do
   end
 
   create_table "second_musical_notes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "second_musical_scales", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -119,6 +127,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_191626) do
   add_foreign_key "grids", "musical_notes"
   add_foreign_key "grids", "musical_scales"
   add_foreign_key "grids", "second_musical_notes"
+  add_foreign_key "grids", "second_musical_scales"
   add_foreign_key "grids", "sections"
   add_foreign_key "grids", "songs"
   add_foreign_key "grids", "types"
