@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_18_201925) do
+ActiveRecord::Schema.define(version: 2020_05_18_205112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,18 @@ ActiveRecord::Schema.define(version: 2020_05_18_201925) do
     t.index ["song_id"], name: "index_boxes_on_song_id"
   end
 
+  create_table "fourth_musical_notes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "fourth_musical_scales", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "grids", force: :cascade do |t|
     t.integer "location"
     t.bigint "song_id", null: false
@@ -57,6 +69,10 @@ ActiveRecord::Schema.define(version: 2020_05_18_201925) do
     t.bigint "second_musical_scale_id"
     t.bigint "third_musical_note_id"
     t.bigint "third_musical_scale_id"
+    t.bigint "fourth_musical_note_id"
+    t.bigint "fourth_musical_scale_id"
+    t.index ["fourth_musical_note_id"], name: "index_grids_on_fourth_musical_note_id"
+    t.index ["fourth_musical_scale_id"], name: "index_grids_on_fourth_musical_scale_id"
     t.index ["musical_note_id"], name: "index_grids_on_musical_note_id"
     t.index ["musical_scale_id"], name: "index_grids_on_musical_scale_id"
     t.index ["second_musical_note_id"], name: "index_grids_on_second_musical_note_id"
@@ -140,6 +156,8 @@ ActiveRecord::Schema.define(version: 2020_05_18_201925) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "boxes", "songs"
+  add_foreign_key "grids", "fourth_musical_notes"
+  add_foreign_key "grids", "fourth_musical_scales"
   add_foreign_key "grids", "musical_notes"
   add_foreign_key "grids", "musical_scales"
   add_foreign_key "grids", "second_musical_notes"
