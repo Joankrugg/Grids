@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_18_195203) do
+ActiveRecord::Schema.define(version: 2020_05_18_201925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,12 +55,16 @@ ActiveRecord::Schema.define(version: 2020_05_18_195203) do
     t.bigint "musical_scale_id"
     t.bigint "second_musical_note_id"
     t.bigint "second_musical_scale_id"
+    t.bigint "third_musical_note_id"
+    t.bigint "third_musical_scale_id"
     t.index ["musical_note_id"], name: "index_grids_on_musical_note_id"
     t.index ["musical_scale_id"], name: "index_grids_on_musical_scale_id"
     t.index ["second_musical_note_id"], name: "index_grids_on_second_musical_note_id"
     t.index ["second_musical_scale_id"], name: "index_grids_on_second_musical_scale_id"
     t.index ["section_id"], name: "index_grids_on_section_id"
     t.index ["song_id"], name: "index_grids_on_song_id"
+    t.index ["third_musical_note_id"], name: "index_grids_on_third_musical_note_id"
+    t.index ["third_musical_scale_id"], name: "index_grids_on_third_musical_scale_id"
     t.index ["type_id"], name: "index_grids_on_type_id"
   end
 
@@ -103,6 +107,18 @@ ActiveRecord::Schema.define(version: 2020_05_18_195203) do
     t.index ["user_id"], name: "index_songs_on_user_id"
   end
 
+  create_table "third_musical_notes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "third_musical_scales", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -130,6 +146,8 @@ ActiveRecord::Schema.define(version: 2020_05_18_195203) do
   add_foreign_key "grids", "second_musical_scales"
   add_foreign_key "grids", "sections"
   add_foreign_key "grids", "songs"
+  add_foreign_key "grids", "third_musical_notes"
+  add_foreign_key "grids", "third_musical_scales"
   add_foreign_key "grids", "types"
   add_foreign_key "songs", "users"
 end
