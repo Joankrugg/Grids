@@ -1,15 +1,88 @@
-<%= simple_form_for [@song, @grid ] do |f| %>
-  <%= f.association :section %>
-  <%= f.input :location, collection: 1...8 %>
-  <%= f.association :type %>
-  <%= f.input :grid_location, collection: 1...8 %>
-  <%= f.association :musical_note %>
-  <%= f.association :musical_scale %>
-  <%= f.association :second_musical_note %>
-  <%= f.association :second_musical_scale %>
-  <%= f.association :third_musical_note %>
-  <%= f.association :third_musical_scale %>
-  <%= f.association :fourth_musical_note %>
-  <%= f.association :fourth_musical_scale %>
-  <%= f.submit "Submit grid", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-grid">
+        <h1>Make a grid</h1>
+      </div>
+    </div>
+  </div>
+  <%= simple_form_for [@song, @grid ] do |f| %>
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label class="control-label check_boxes optional">Section</label>
+        <input type="hidden" name="grid[section_id]" value="">
+        <div class="section-names">
+          <% Section.all.each do |section| %>
+            <div class="checkbox" class="hidden" value="<%= section.id %>" name="grid[section_id]" id="grid_section_id_section.id ">
+            <label for="grid_section_id_<%= section.id %>"><%= section.name %><i class="fa fa-check"></i></label>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <%= f.input :location, collection: 1..8, as: :radio_buttons  %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.association :type, as: :radio_buttons  %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.input :grid_location, collection: 1..4, as: :radio_buttons  %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.association :musical_note, as: :radio_buttons  %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.association :musical_scale, as: :radio_buttons  %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.association :second_musical_note, as: :radio_buttons  %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.association :second_musical_scale, as: :radio_buttons  %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.association :third_musical_note, as: :radio_buttons  %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.association :third_musical_scale, as: :radio_buttons  %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.association :fourth_musical_note, as: :radio_buttons  %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.association :fourth_musical_scale, as: :radio_buttons  %>
+      </div>
+    </div>
+      <%= f.submit "Save", class: "btn btn-primary"  %>
+    <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".checkbox").on("click", function(e){
+      // Change active tab
+      $('.checkbox').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
