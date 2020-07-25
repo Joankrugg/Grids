@@ -27,7 +27,7 @@
   margin: 20px 0;
 }
 
-.checkbox {
+.section-box {
   background: #b7b7b7;
   padding: 20px;
   border-radius: 5px;
@@ -44,3 +44,203 @@
   opacity: 1;
   }
 }
+
+.location-box{
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 50%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $brand;
+  color: white;
+  opacity: 1;
+  }
+}
+
+.type-box{
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 50%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $brand;
+  color: white;
+  opacity: 1;
+  }
+}
+
+.grid-location-box{
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 50%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $brand;
+  color: white;
+  opacity: 1;
+  }
+}
+
+.musical_note-box{
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 50%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $brand;
+  color: white;
+  opacity: 1;
+  }
+}
+
+.second_musical_note-box{
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 50%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $brand;
+  color: white;
+  opacity: 1;
+  }
+}
+
+.third_musical_note-box{
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 50%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $brand;
+  color: white;
+  opacity: 1;
+  }
+}
+
+.fourth_musical_note-box{
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 50%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $brand;
+  color: white;
+  opacity: 1;
+  }
+}
+
+.musical_scale-box{
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 50%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $brand;
+  color: white;
+  opacity: 1;
+  }
+}
+
+.second_musical_scale-box{
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 50%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $brand;
+  color: white;
+  opacity: 1;
+  }
+}
+
+.third_musical_scale-box{
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 50%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $brand;
+  color: white;
+  opacity: 1;
+  }
+}
+
+.fourth_musical_scale-box{
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 50%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $brand;
+  color: white;
+  opacity: 1;
+  }
+}
+
+

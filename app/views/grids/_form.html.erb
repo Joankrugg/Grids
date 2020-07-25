@@ -13,60 +13,192 @@
         <input type="hidden" name="grid[section_id]" value="">
         <div class="section-names">
           <% Section.all.each do |section| %>
-            <div class="checkbox" class="hidden" value="<%= section.id %>" name="grid[section_id]" id="grid_section_id_section.id ">
+            <div class="section-box" class="hidden" value="<%= section.id %>" name="grid[section_id]" id="grid_section_id_section.id ">
             <label for="grid_section_id_<%= section.id %>"><%= section.name %><i class="fa fa-check"></i></label>
             </div>
           <% end %>
         </div>
       </div>
-      <div class="col-sm-6">
-        <%= f.input :location, collection: 1..8, as: :radio_buttons  %>
+
+      <div class="col-sm-6 form-group">
+        <fieldset class="form-group optional grid_location">
+          <legend class="col-form-label pt-0">Location</legend>
+          <input type="hidden" name="grid[location]" value="">
+          <div class="location-box">
+            <input class="location-box-input optional" type="hidden" value="1" name="grid[location]" id="grid_location_1">
+            <label class="location-box-label collection" for="grid_location_1">1</label>
+          </div>
+          <div class="location-box">
+            <input class="location-box-input optional" type="hidden" value="2" name="grid[location]" id="grid_location_2">
+            <label class="location-box-label collection" for="grid_location_2">2</label>
+          </div>
+          <div class="location-box">
+            <input class="location-box-input optional" type="hidden" value="3" name="grid[location]" id="grid_location_3">
+            <label class="location-box-label collection" for="grid_location_3">3</label>
+          </div>
+          <div class="location-box">
+            <input class="location-box-input optional" type="hidden" value="4" name="grid[location]" id="grid_location_4">
+            <label class="location-box-label collection" for="grid_location_4">4</label>
+          </div>
+          <div class="location-box">
+            <input class="location-box-input optional" type="hidden" value="5" name="grid[location]" id="grid_location_5">
+            <label class="location-box-label collection" for="grid_location_5">5</label>
+          </div>
+          <div class="location-box">
+            <input class="location-box-input optional" type="hidden" value="6" name="grid[location]" id="grid_location_6">
+            <label class="location-box-label collection" for="grid_location_6">6</label>
+          </div>
+          <div class="location-box">
+            <input class="location-box-input optional" type="hidden" value="7" name="grid[location]" id="grid_location_7">
+            <label class="location-box-label collection" for="grid_location_7">7</label>
+          </div>
+          <div class="location-box">
+            <input class="location-box-input optional" type="hidden" value="8" name="grid[location]" id="grid_location_8">
+            <label class="location-box-label collection" for="grid_location_8">8</label>
+          </div>
+        </fieldset>
       </div>
     </div>
 
 
     <div class="row">
       <div class="col-sm-6">
-        <%= f.association :type, as: :radio_buttons  %>
+        <fieldset class="form-group radio_buttons required grid_type">
+          <legend class="col-form-label pt-0"></legend>
+          <input type="hidden" name="grid[type_id]" value="">
+          <% Type.all.each do |type| %>
+            <div class="type-box">
+              <input class="form-check-input radio_buttons required" type="hidden" value="type_id" name="grid[type_id]" id="grid_type_id_1">
+              <label class="form-check-label collection_radio_buttons" for="grid_type_id_1"><%= type.name %></label>
+            </div>
+          <% end %>
+        </fieldset>
       </div>
       <div class="col-sm-6">
-        <%= f.input :grid_location, collection: 1..4, as: :radio_buttons  %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <%= f.association :musical_note, as: :radio_buttons  %>
-      </div>
-      <div class="col-sm-6">
-        <%= f.association :musical_scale, as: :radio_buttons  %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <%= f.association :second_musical_note, as: :radio_buttons  %>
-      </div>
-      <div class="col-sm-6">
-        <%= f.association :second_musical_scale, as: :radio_buttons  %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <%= f.association :third_musical_note, as: :radio_buttons  %>
-      </div>
-      <div class="col-sm-6">
-        <%= f.association :third_musical_scale, as: :radio_buttons  %>
+        <fieldset class="form-group radio_buttons optional grid_grid_location">
+          <legend class="col-form-label pt-0">Grid location</legend>
+          <input type="hidden" name="grid[grid_location]" value="">
+          <div class="grid-location-box">
+            <input class="grid-location-box-input optional" type="hidden" value="1" name="grid[grid_location]" id="grid_grid_location_1"><label class="grid-location-box-label collection_hidden_buttons" for="grid_grid_location_1">1</label>
+          </div>
+          <div class="grid-location-box">
+            <input class="grid-location-box-input optional" type="hidden" value="2" name="grid[grid_location]" id="grid_grid_location_2"><label class="grid-location-box-label collection_hidden_buttons" for="grid_grid_location_2">2</label>
+          </div>
+          <div class="grid-location-box">
+            <input class="grid-location-box-input optional" type="hidden" value="3" name="grid[grid_location]" id="grid_grid_location_3"><label class="grid-location-box-label collection_hidden_buttons" for="grid_grid_location_3">3</label>
+          </div>
+          <div class="grid-location-box">
+            <input class="grid-location-box-input optional" type="hidden" value="4" name="grid[grid_location]" id="grid_grid_location_4"><label class="grid-location-box-label collection_hidden_buttons" for="grid_grid_location_4">4</label>
+          </div>
+        </fieldset>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-6">
-        <%= f.association :fourth_musical_note, as: :radio_buttons  %>
+        <fieldset class="form-group radio_buttons required grid_type">
+          <legend class="col-form-label pt-0"></legend>
+          <input type="hidden" name="grid[type_id]" value="">
+          <% MusicalNote.all.each do |musical_note| %>
+            <div class="musical_note-box">
+              <input class="form-check-input radio_buttons required" type="hidden" value="musical_note_id" name="grid[musical_note_id]" id="grid_musical_note_id_1">
+              <label class="form-check-label collection_radio_buttons" for="grid_musical_note_id_1"><%= musical_note.name %></label>
+            </div>
+          <% end %>
+        </fieldset>
       </div>
       <div class="col-sm-6">
-        <%= f.association :fourth_musical_scale, as: :radio_buttons  %>
+        <fieldset class="form-group radio_buttons required grid_type">
+          <legend class="col-form-label pt-0"></legend>
+          <input type="hidden" name="grid[type_id]" value="">
+          <% MusicalScale.all.each do |musical_scale| %>
+            <div class="musical_scale-box">
+              <input class="form-check-input radio_buttons required" type="hidden" value="musical_scale_id" name="grid[musical_scale_id]" id="grid_musical_scale_id_1">
+              <label class="form-check-label collection_radio_buttons" for="grid_musical_scale_id_1"><%= musical_scale.name %></label>
+            </div>
+          <% end %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <fieldset class="form-group radio_buttons required grid_type">
+          <legend class="col-form-label pt-0"></legend>
+          <input type="hidden" name="grid[type_id]" value="">
+          <% SecondMusicalNote.all.each do |second_musical_note| %>
+            <div class="second_musical_note-box">
+              <input class="form-check-input radio_buttons required" type="hidden" value="second_musical_note_id" name="grid[second_musical_note_id]" id="grid_second_musical_note_id_1">
+              <label class="form-check-label collection_radio_buttons" for="grid_second_musical_note_id_1"><%= second_musical_note.name %></label>
+            </div>
+          <% end %>
+        </fieldset>
+      </div>
+      <div class="col-sm-6">
+        <fieldset class="form-group radio_buttons required grid_type">
+          <legend class="col-form-label pt-0"></legend>
+          <input type="hidden" name="grid[type_id]" value="">
+          <% SecondMusicalScale.all.each do |second_musical_scale| %>
+            <div class="second_musical_scale-box">
+              <input class="form-check-input radio_buttons required" type="hidden" value="second_musical_scale_id" name="grid[second_musical_scale_id]" id="grid_second_musical_scale_id_1">
+              <label class="form-check-label collection_radio_buttons" for="grid_second_musical_scale_id_1"><%= second_musical_scale.name %></label>
+            </div>
+          <% end %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <fieldset class="form-group radio_buttons required grid_type">
+          <legend class="col-form-label pt-0"></legend>
+          <input type="hidden" name="grid[type_id]" value="">
+          <% ThirdMusicalNote.all.each do |third_musical_note| %>
+            <div class="third_musical_note-box">
+              <input class="form-check-input radio_buttons required" type="hidden" value="third_musical_note_id" name="grid[third_musical_note_id]" id="grid_third_musical_note_id_1">
+              <label class="form-check-label collection_radio_buttons" for="grid_third_musical_note_id_1"><%= third_musical_note.name %></label>
+            </div>
+          <% end %>
+        </fieldset>
+      </div>
+      <div class="col-sm-6">
+        <fieldset class="form-group radio_buttons required grid_type">
+          <legend class="col-form-label pt-0"></legend>
+          <input type="hidden" name="grid[type_id]" value="">
+          <% ThirdMusicalScale.all.each do |third_musical_scale| %>
+            <div class="third_musical_scale-box">
+              <input class="form-check-input radio_buttons required" type="hidden" value="third_musical_scale_id" name="grid[third_musical_scale_id]" id="grid_third_musical_scale_id_1">
+              <label class="form-check-label collection_radio_buttons" for="grid_third_musical_scale_id_1"><%= third_musical_scale.name %></label>
+            </div>
+          <% end %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <fieldset class="form-group radio_buttons required grid_type">
+          <legend class="col-form-label pt-0"></legend>
+          <input type="hidden" name="grid[type_id]" value="">
+          <% FourthMusicalNote.all.each do |fourth_musical_note| %>
+            <div class="fourth_musical_note-box">
+              <input class="form-check-input radio_buttons required" type="hidden" value="fourth_musical_note_id" name="grid[fourth_musical_note_id]" id="grid_fourth_musical_note_id_1">
+              <label class="form-check-label collection_radio_buttons" for="grid_fourth_musical_note_id_1"><%= fourth_musical_note.name %></label>
+            </div>
+          <% end %>
+        </fieldset>
+      </div>
+      <div class="col-sm-6">
+        <fieldset class="form-group radio_buttons required grid_type">
+          <legend class="col-form-label pt-0"></legend>
+          <input type="hidden" name="grid[type_id]" value="">
+          <% FourthMusicalScale.all.each do |fourth_musical_scale| %>
+            <div class="fourth_musical_scale-box">
+              <input class="form-check-input radio_buttons required" type="hidden" value="fourth_musical_scale_id" name="grid[fourth_musical_scale_id]" id="grid_fourth_musical_scale_id_1">
+              <label class="form-check-label collection_radio_buttons" for="grid_fourth_musical_scale_id_1"><%= fourth_musical_scale.name %></label>
+            </div>
+          <% end %>
+        </fieldset>
       </div>
     </div>
       <%= f.submit "Save", class: "btn btn-primary"  %>
@@ -79,10 +211,112 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $(".checkbox").on("click", function(e){
+    $(".section-box").on("click", function(e){
       // Change active tab
-      $('.checkbox').removeClass('active');
+      $('.section-box').removeClass('active');
       $(this).addClass('active');
     });
   });
 </script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".location-box").on("click", function(e){
+      // Change active tab
+      $('.location-box').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".type-box").on("click", function(e){
+      // Change active tab
+      $('.type-box').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".grid-location-box").on("click", function(e){
+      // Change active tab
+      $('.grid-location-box').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".musical_note-box").on("click", function(e){
+      // Change active tab
+      $('.musical_note-box').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".second_musical_note-box").on("click", function(e){
+      // Change active tab
+      $('.second_musical_note-box').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".third_musical_note-box").on("click", function(e){
+      // Change active tab
+      $('.third_musical_note-box').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".fourth_musical_note-box").on("click", function(e){
+      // Change active tab
+      $('.fourth_musical_note-box').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".musical_scale-box").on("click", function(e){
+      // Change active tab
+      $('.musical_scale-box').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".second_musical_scale-box").on("click", function(e){
+      // Change active tab
+      $('.second_musical_scale-box').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".third_musical_scale-box").on("click", function(e){
+      // Change active tab
+      $('.third_musical_scale-box').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".fourth_musical_scale-box").on("click", function(e){
+      // Change active tab
+      $('.fourth_musical_scale-box').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+
