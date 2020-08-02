@@ -64,14 +64,29 @@
     <div class="row">
       <div class="col-sm-6">
         <fieldset class="form-group radio_buttons required grid_type">
-          <legend class="col-form-label pt-0"></legend>
+          <legend class="col-form-label pt-0">Type <abbr title="required">*</abbr></legend>
           <input type="hidden" name="grid[type_id]" value="">
-          <% Type.all.each do |type| %>
-            <div class="type-box">
-              <input class="form-check-input radio_buttons required" type="hidden" value="type_id" name="grid[type_id]" id="grid_type_id_1">
-              <label class="form-check-label collection_radio_buttons" for="grid_type_id_1"><%= type.name %></label>
-            </div>
-          <% end %>
+          <div class="type-box single">
+            <input class="type-box-input" type="hidden" value="1" name="grid[type_id]" id="grid_type_id_1">
+            <label class="type-box-label collection_hidden_buttons" for="grid_type_id_1">Single</label>
+          </div>
+          <div class="type-box couple">
+            <input class="type-box-input" type="hidden" value="2" name="grid[type_id]" id="grid_type_id_2">
+            <label class="type-box-label collection_hidden_buttons" for="grid_type_id_2">Couple</label>
+          </div>
+          <div class="type-box first_half_single">
+            <input class="type-box-input" type="hidden" value="3" name="grid[type_id]" id="grid_type_id_3">
+            <label class="type-box-label collection_hidden_buttons" for="grid_type_id_3">1rst half Single, then Couple
+            </label>
+          </div>
+          <div class="type-box first_half_couple">
+            <input class="type-box-input" type="hidden" value="4" name="grid[type_id]" id="grid_type_id_4">
+            <label class="type-box-label collection_hidden_buttons" for="grid_type_id_4">1rst half Couple, then Single</label>
+          </div>
+          <div class="type-box four">
+            <input class="type-box-input four" type="hidden" value="5" name="grid[type_id]" id="grid_type_id_5">
+            <label class="type-box-label collection_hidden_buttons" for="grid_type_id_5">Four</label>
+          </div>
         </fieldset>
       </div>
       <div class="col-sm-6">
@@ -95,9 +110,9 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-6 first">
         <fieldset class="form-group radio_buttons required grid_type">
-          <legend class="col-form-label pt-0"></legend>
+          <legend class="col-form-label pt-0">Musical note</legend>
           <input type="hidden" name="grid[type_id]" value="">
           <% MusicalNote.all.each do |musical_note| %>
             <div class="musical_note-box">
@@ -107,9 +122,9 @@
           <% end %>
         </fieldset>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 first">
         <fieldset class="form-group radio_buttons required grid_type">
-          <legend class="col-form-label pt-0"></legend>
+          <legend class="col-form-label pt-0">Musical scale</legend>
           <input type="hidden" name="grid[type_id]" value="">
           <% MusicalScale.all.each do |musical_scale| %>
             <div class="musical_scale-box">
@@ -122,9 +137,9 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-6 second">
         <fieldset class="form-group radio_buttons required grid_type">
-          <legend class="col-form-label pt-0"></legend>
+          <legend class="col-form-label pt-0">Second musical note</legend>
           <input type="hidden" name="grid[type_id]" value="">
           <% SecondMusicalNote.all.each do |second_musical_note| %>
             <div class="second_musical_note-box">
@@ -134,9 +149,9 @@
           <% end %>
         </fieldset>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 second">
         <fieldset class="form-group radio_buttons required grid_type">
-          <legend class="col-form-label pt-0"></legend>
+          <legend class="col-form-label pt-0">Second musical scale</legend>
           <input type="hidden" name="grid[type_id]" value="">
           <% SecondMusicalScale.all.each do |second_musical_scale| %>
             <div class="second_musical_scale-box">
@@ -149,9 +164,9 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-6 third">
         <fieldset class="form-group radio_buttons required grid_type">
-          <legend class="col-form-label pt-0"></legend>
+          <legend class="col-form-label pt-0">Third musical note</legend>
           <input type="hidden" name="grid[type_id]" value="">
           <% ThirdMusicalNote.all.each do |third_musical_note| %>
             <div class="third_musical_note-box">
@@ -161,9 +176,9 @@
           <% end %>
         </fieldset>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 third">
         <fieldset class="form-group radio_buttons required grid_type">
-          <legend class="col-form-label pt-0"></legend>
+          <legend class="col-form-label pt-0">Third musical scale</legend>
           <input type="hidden" name="grid[type_id]" value="">
           <% ThirdMusicalScale.all.each do |third_musical_scale| %>
             <div class="third_musical_scale-box">
@@ -176,9 +191,9 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-6 fourth">
         <fieldset class="form-group radio_buttons required grid_type">
-          <legend class="col-form-label pt-0"></legend>
+          <legend class="col-form-label pt-0">Fourth musical note</legend>
           <input type="hidden" name="grid[type_id]" value="">
           <% FourthMusicalNote.all.each do |fourth_musical_note| %>
             <div class="fourth_musical_note-box">
@@ -188,9 +203,9 @@
           <% end %>
         </fieldset>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 fourth">
         <fieldset class="form-group radio_buttons required grid_type">
-          <legend class="col-form-label pt-0"></legend>
+          <legend class="col-form-label pt-0">Fourth musical scale</legend>
           <input type="hidden" name="grid[type_id]" value="">
           <% FourthMusicalScale.all.each do |fourth_musical_scale| %>
             <div class="fourth_musical_scale-box">
@@ -212,61 +227,60 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $(".section-box").on("click", function(e){
-      // Change active tab
       $('.section-box').removeClass('active');
       $(this).addClass('active');
     });
   });
 </script>
+
 <script type="text/javascript">
   $(document).ready(function(){
     $(".location-box").on("click", function(e){
-      // Change active tab
       $('.location-box').removeClass('active');
       $(this).addClass('active');
     });
   });
 </script>
+
 <script type="text/javascript">
   $(document).ready(function(){
     $(".type-box").on("click", function(e){
-      // Change active tab
       $('.type-box').removeClass('active');
       $(this).addClass('active');
     });
   });
 </script>
+
 <script type="text/javascript">
   $(document).ready(function(){
     $(".grid-location-box").on("click", function(e){
-      // Change active tab
       $('.grid-location-box').removeClass('active');
       $(this).addClass('active');
     });
   });
 </script>
+
 <script type="text/javascript">
   $(document).ready(function(){
     $(".musical_note-box").on("click", function(e){
-      // Change active tab
       $('.musical_note-box').removeClass('active');
       $(this).addClass('active');
     });
   });
 </script>
+
 <script type="text/javascript">
   $(document).ready(function(){
     $(".second_musical_note-box").on("click", function(e){
-      // Change active tab
       $('.second_musical_note-box').removeClass('active');
       $(this).addClass('active');
     });
   });
 </script>
+
 <script type="text/javascript">
   $(document).ready(function(){
     $(".third_musical_note-box").on("click", function(e){
-      // Change active tab
       $('.third_musical_note-box').removeClass('active');
       $(this).addClass('active');
     });
@@ -276,34 +290,33 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $(".fourth_musical_note-box").on("click", function(e){
-      // Change active tab
       $('.fourth_musical_note-box').removeClass('active');
       $(this).addClass('active');
     });
   });
 </script>
+
 <script type="text/javascript">
   $(document).ready(function(){
     $(".musical_scale-box").on("click", function(e){
-      // Change active tab
       $('.musical_scale-box').removeClass('active');
       $(this).addClass('active');
     });
   });
 </script>
+
 <script type="text/javascript">
   $(document).ready(function(){
     $(".second_musical_scale-box").on("click", function(e){
-      // Change active tab
       $('.second_musical_scale-box').removeClass('active');
       $(this).addClass('active');
     });
   });
 </script>
+
 <script type="text/javascript">
   $(document).ready(function(){
     $(".third_musical_scale-box").on("click", function(e){
-      // Change active tab
       $('.third_musical_scale-box').removeClass('active');
       $(this).addClass('active');
     });
@@ -313,10 +326,47 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $(".fourth_musical_scale-box").on("click", function(e){
-      // Change active tab
       $('.fourth_musical_scale-box').removeClass('active');
       $(this).addClass('active');
     });
   });
 </script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".single").on("click", function(e){
+      $(".fourth, .third, .second").hide();
+      $(".first").show();
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".couple").on("click", function(e){
+      $(".fourth, .third").hide();
+      $(".first, .second").show();
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".first_half_single, .first_half_couple").on("click", function(e){
+      $(".fourth").hide();
+      $(".first, .second, .third").show();
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".four").on("click", function(e){
+      $(".first, .second, .third, .fourth").show();
+    });
+  });
+</script>
+
+
+
 
