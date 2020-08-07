@@ -17,13 +17,15 @@ class GridsController < ApplicationController
     @grid = @song.grids.build(grid_params)
     @song = Song.find(params[:song_id])
     @grid.song = @song
+
     if @grid.save
       redirect_to song_grids_path(@song)
     else
       render :new
     end
   end
-
+  def show
+  end
 
   def edit
     @grid = @song.grids.find(params[:id])
@@ -52,6 +54,6 @@ class GridsController < ApplicationController
   end
 
   def grid_params
-    params.require(:grid).permit(:location, :song_id, :section_id, :type_id, :grid_location, :musical_note_id, :musical_scale_id, :second_musical_note_id, :second_musical_scale_id, :third_musical_note_id, :third_musical_scale_id, :fourth_musical_note_id, :fourth_musical_scale_id)
+    params.require(:grid).permit(:location, :song_id, :section_id, :type_id, :grid_location, :musical_note, :musical_scale_id, :second_musical_note_id, :second_musical_scale_id, :third_musical_note_id, :third_musical_scale_id, :fourth_musical_note_id, :fourth_musical_scale_id)
   end
 end

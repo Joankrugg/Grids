@@ -36,13 +36,6 @@ ActiveRecord::Schema.define(version: 2020_05_18_205112) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "boxes", force: :cascade do |t|
-    t.bigint "song_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["song_id"], name: "index_boxes_on_song_id"
-  end
-
   create_table "fourth_musical_notes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -155,7 +148,6 @@ ActiveRecord::Schema.define(version: 2020_05_18_205112) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "boxes", "songs"
   add_foreign_key "grids", "fourth_musical_notes"
   add_foreign_key "grids", "fourth_musical_scales"
   add_foreign_key "grids", "musical_notes"
