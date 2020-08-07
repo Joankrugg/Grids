@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :users, only: [:index, :show, :edit, :update, :destroy]
   resources :songs do
-    resources :grids, only: [:new, :create, :edit, :update]
-    resources :boxes, only: [:new, :create, :edit, :update]
+    resources :grids
   end
-  resources :grids, only: [:destroy]# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :boxes, only: [:destroy]
 end

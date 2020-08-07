@@ -1,0 +1,20 @@
+<div class="container">
+  <% b = @song.grids.sort_by { |grid| grid[:location] } %>
+  <% b.each do |grid| %>
+    <div class="row">
+      <%= link_to edit_song_grid_path(@song, grid) do %>
+        <div class='grid col-sm-12'>
+          <div class='grid-info'>
+            <% if grid.location.present? %>
+              <div class="list-group-item"><%= grid.location %></div>
+            <% end %>
+            <% if grid.section.present? %>
+              <div class="list-group-item"><%= grid.section.name %></div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <br>
+    </div>
+  <% end %>
+</div>

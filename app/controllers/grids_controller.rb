@@ -2,6 +2,12 @@ class GridsController < ApplicationController
   before_action :get_song
   before_action :set_grid, only: [:show, :edit, :update, :destroy]
 
+
+
+  def index
+    @grids = @song.grids
+  end
+
   def new
     # we need @song in our `simple_form_for`
     @grid = @song.grids.build
@@ -9,8 +15,10 @@ class GridsController < ApplicationController
 
   def create
     @grid = @song.grids.build(grid_params)
+    @song = Song.find(params[:song_id])
+    @grid.song = @song
     if @grid.save
-      redirect_to song_path(@song)
+      redirect_to song_grids_path(@song)
     else
       render :new
     end
@@ -18,11 +26,12 @@ class GridsController < ApplicationController
 
 
   def edit
-
+    @grid = @song.grids.find(params[:id])
   end
 
   def update
     if @grid.update(grid_params)
+       @grid.song = @song
       redirect_to song_path(@song)
     else
       render :edit

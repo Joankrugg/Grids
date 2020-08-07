@@ -5,31 +5,10 @@
 <br>
 <% if @song.user == current_user %>
   <%= link_to 'create a grid', new_song_grid_path(@song) %>
+  <%= link_to 'destroy', song_path(@song), class: "call-to-action btn-medium btn last-item", method: :delete, data: { confirm: "Are you sure?" } %>
 <% end %>
 
-<div class="container">
-  <% b = @song.grids.sort_by { |grid| grid[:location] } %>
-  <% b.each do |grid| %>
-    <div class="row">
-      <%=link_to edit_song_grid_path(@song) do %>
-        <div class='grid col-sm-12'>
-          <div class='grid-info'>
-            <% if grid.location.present? %>
-              <div class="list-group-item"><%= grid.location %></li>
-            <% end %>
-            <% if grid.section.present? %>
-              <div class="list-group-item"><%= grid.section.name %></li>
-            <% end %>
-            <% if grid.type.present? %>
-              <div class="list-group-item"><%= grid.type.name %></li>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-      <br>
-    </div>
-  <% end %>
-</div>
+<%= link_to 'grid', song_grids_path(@song) %>
 
 
 
