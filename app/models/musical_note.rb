@@ -1,3 +1,3 @@
 class MusicalNote < ApplicationRecord
-  belongs_to :grids, dependent: :destroy
+  has_many :grids, dependent: :destroy
 end

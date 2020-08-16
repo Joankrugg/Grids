@@ -9,7 +9,6 @@ class GridsController < ApplicationController
   end
 
   def new
-    # we need @song in our `simple_form_for`
     @grid = @song.grids.build
   end
 
@@ -25,6 +24,7 @@ class GridsController < ApplicationController
     end
   end
   def show
+    redirect_to song_grids_path(@grid)
   end
 
   def edit
@@ -34,7 +34,7 @@ class GridsController < ApplicationController
   def update
     if @grid.update(grid_params)
        @grid.song = @song
-      redirect_to song_path(@song)
+      redirect_to song_grids_path(@song)
     else
       render :edit
     end
@@ -54,6 +54,6 @@ class GridsController < ApplicationController
   end
 
   def grid_params
-    params.require(:grid).permit(:location, :song_id, :section_id, :type_id, :grid_location, :musical_note, :musical_scale_id, :second_musical_note_id, :second_musical_scale_id, :third_musical_note_id, :third_musical_scale_id, :fourth_musical_note_id, :fourth_musical_scale_id)
+    params.require(:grid).permit(:location, :song_id, :section_id, :type_id, :grid_location, :musical_note_id, :musical_scale_id, :second_musical_note_id, :second_musical_scale_id, :third_musical_note_id, :third_musical_scale_id, :fourth_musical_note_id, :fourth_musical_scale_id)
   end
 end

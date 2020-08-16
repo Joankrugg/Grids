@@ -1,5 +1,5 @@
 // Form design
-.form-grid {
+.form-post{
   background: white;
   margin-top: 50px;
   padding: 20px;
@@ -8,7 +8,7 @@
     text-align: center;
     font-weight: bold;
     font-size: 25px;
-    color: #666666;
+    color: $brand;
     margin-bottom: 50px;
     margin-top: 0px;
   }
@@ -16,6 +16,10 @@
     width: 100%;
     padding: 10px;
     font-weight: bold;
+    color: white;
+    :hover{
+      color: #666666;
+    }
   }
 }
 
@@ -165,13 +169,17 @@
   opacity: 1;
   }
 }
-
+.musical_scale {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 .musical_scale-box{
   background: #b7b7b7;
   padding: 20px;
   border-radius: 5px;
   opacity: .4;
-  flex: 0 0 50%;
+  flex: 0 0 25%;
   text-align: center;
   &:hover {
     opacity: 1;
