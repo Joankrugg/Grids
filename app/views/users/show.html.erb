@@ -1,28 +1,28 @@
-<h1>Profil</h1>
-<% if @user.name? %>
-  <p>Welcome <%= @user.name %></p>
-  <p><%= @user.email %>
-<% else %>
-  <p>Hi buddy !!! would you like to update your profil first?</p>
-<% end %>
-
-<% if @user.photo.present? %>
-  <%= image_tag @user.photo, height: 50, width: 50, crop: :fill %>
-<% end %>
-
-<%= render 'form' %>
-
-<h3>your songs</h3>
-
-<% if @user.songs.present? %>
-  <% @user.songs.each do |s| %>
-    <%= link_to s do %>
-      <%= s.title %>
-    <% end %>
+<div class="container">
+  <h1 class="title">Profil</h1>
+  <% if @user.name? %>
+    <p class="infos"><%= @user.name %></p>
+    <p class="infos"><%= @user.email %></p>
+  <% else %>
+    <p class="infos">Hi buddy !!! would you like to update your profil first?</p>
   <% end %>
-<% else %>
-  <p>no song yet</p>
-<% end %>
 
+  <% if @user.photo.present? %>
+    <%= image_tag @user.photo, height: 50, width: 50, crop: :fill %>
+  <% end %>
+  <div class="infos">
+    <%= render 'form' %>
+  </div>
+  <h3 class="title">SONGBOOK</h3>
 
-<%= link_to 'new song', new_song_path %>
+  <% if @user.songs.present? %>
+    <% @user.songs.each do |s| %>
+      <%= link_to s do %>
+        <p class="infos"><%= s.title %></p><br>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>no song yet</p>
+  <% end %>
+  <p class="infos"><%= link_to 'create a new song', new_song_path %></p>
+</div>

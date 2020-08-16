@@ -1,14 +1,12 @@
-<h1><%= @song.title %></h1>
+<h1 class="title"><%= @song.title %></h1>
 <br>
 
-<%= @song.youtube_link %>
+<p class="infos"><%= @song.youtube_link %></p>
+<br>
+<p class="infos"><%= link_to 'Voir la grid', song_grids_path(@song) %></p>
 <br>
 <% if @song.user == current_user %>
-  <%= link_to 'create a grid', new_song_grid_path(@song) %>
-  <%= link_to 'destroy', song_path(@song), class: "call-to-action btn-medium btn last-item", method: :delete, data: { confirm: "Are you sure?" } %>
+  <p class="infos"><%= link_to 'create a grid', new_song_grid_path(@song) %></p>
+  <p class="infos"><%= link_to 'destroy', song_path(@song), class: "call-to-action btn-medium btn last-item", method: :delete, data: { confirm: "Are you sure?" } %></p>
 <% end %>
-
-<%= link_to 'grid', song_grids_path(@song) %>
-
-
 

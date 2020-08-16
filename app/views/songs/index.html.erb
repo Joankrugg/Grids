@@ -1,6 +1,6 @@
-<h1>Songs index</h1>
+<h1 class="title">Songs index</h1>
 <% @songs.each do |s| %>
   <%= link_to s do  %>
-    <%= s.title %>
+    <p class="infos"><%= s.title %></p>
   <% end %>
 <% end %>
