@@ -1,47 +1,25 @@
 .grid {
   position: relative;
+  margin: auto;
 }
 
 
 .first-details{
   position: absolute;
-  bottom: 100px;
-  left: 75px;
+  bottom: 85px;
+  left: 60px;
   z-index: 1;
 }
 
 .second-details{
   position: absolute;
-  bottom: 125px;
-  left: 45px;
+  bottom: 100px;
+  left: 25px;
   z-index: 1;
 }
 
 
 .second-details-2{
-  position: absolute;
-  bottom: 65px;
-  left: 100px;
-  z-index: 1;
-}
-
-
-.third-details{
-  position: absolute;
-  bottom: 125px;
-  left: 45px;
-  z-index: 1;
-}
-
-.third-details-2{
-  position: absolute;
-  bottom: 97px;
-  left: 120px;
-  z-index: 1;
-}
-
-
-.third-details-3{
   position: absolute;
   bottom: 60px;
   left: 70px;
@@ -49,53 +27,76 @@
 }
 
 
+.third-details{
+  position: absolute;
+  bottom: 104px;
+  left: 25px;
+  z-index: 1;
+}
+
+.third-details-2{
+  position: absolute;
+  bottom: 84px;
+  left: 73px;
+  z-index: 1;
+}
+
+
+.third-details-3{
+  position: absolute;
+  bottom: 57px;
+  left: 57px;
+  z-index: 1;
+}
+
+
 .fourth-details{
   position: absolute;
-  bottom: 97px;
-  left: 30px;
+  bottom: 83px;
+  left: 13px;
   z-index: 1;
 }
 
 .fourth-details-2{
   position: absolute;
-  bottom: 130px;
-  left: 75px;
+  bottom: 105px;
+  left: 55px;
   z-index: 1;
 }
 
 
 .fourth-details-3{
   position: absolute;
-  bottom: 70px;
-  left: 80px;
+  bottom: 63px;
+  left: 76px;
   z-index: 1;
 }
 
 .fifth-details{
   position: absolute;
-  bottom: 97px;
-  left: 30px;
+  bottom: 85px;
+  left: 13px;
   z-index: 1;
 }
 
 .fifth-details-2{
   position: absolute;
-  bottom: 130px;
-  left: 75px;
+  bottom: 106px;
+  left: 48px;
   z-index: 1;
 }
 
 
 .fifth-details-3{
   position: absolute;
-  bottom: 97px;
-  left: 120px;
+  bottom: 85px;
+  left: 87px;
   z-index: 1;
 }
 
 .fifth-details-4{
   position: absolute;
-  bottom: 70px;
-  left: 80px;
+  bottom: 60px;
+  left: 60px;
   z-index: 1;
 }

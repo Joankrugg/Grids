@@ -1,7 +1,10 @@
 <h1 class="title"><%= @song.title %></h1>
 <br>
 
-<p class="infos"><%= @song.youtube_link %></p>
+
+<div class="video">
+  <iframe src='https://www.youtube.com/embed/<%= @song.youtube_link[32..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' height='600' width='760' class="img-fluid" alt="Responsive image" frameborder='0' allowfullscreen></iframe>
+</div>
 <br>
 <p class="infos"><%= link_to 'Voir la grid', song_grids_path(@song) %></p>
 <br>
