@@ -1,2 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="bg">
+  <div class="container banner">
+    <h3 class="slogan on-black">Since one drives, everyone goes to the same direction</h3>
+    <div class="call-to-action">
+      <%= link_to "Sign in", new_user_session_path, class: "btn btn-flat" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-flat" %>
+    </div>
+  </div>
+</div>

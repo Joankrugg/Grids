@@ -1,0 +1,16 @@
+.btn-flat {
+  margin-right: 5px;
+  margin-left: 5px;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  background: $brand;
+  transition: background 0.3s ease;
+  opacity: 0.7;
+}
+
+.btn-flat:hover {
+  background: $brand;
+  color: white;
+  opacity: 1;
+}

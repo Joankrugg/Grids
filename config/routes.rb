@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  get '/user' => "pages#home", :as => :user_root
   root to: 'pages#home'
   resources :users, only: [:index, :show, :edit, :update, :destroy]
   resources :songs do

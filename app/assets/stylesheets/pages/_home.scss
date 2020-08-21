@@ -1,1 +1,41 @@
-// Specific CSS for your home-page
+body, html {
+  height: 100%;
+}
+
+
+.bg {
+  /* The image used */
+  padding-top: 60px;
+  background-image: url("https://res.cloudinary.com/da2krghvd/image/upload/v1598020963/19_C2_B0_International_Jazz_Festival_of_Punta_del_Este_-_150111-2052-jikatu__2816077813707_29_drogug.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.on-black{
+  color: white;
+}
+
+
+.call-to-action{
+  padding-top: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.slogan{
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
