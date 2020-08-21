@@ -1,28 +1,36 @@
-<div class="container">
-  <h1 class="title">Profil</h1>
-  <% if @user.name? %>
-    <p class="infos"><%= @user.name %></p>
-    <p class="infos"><%= @user.email %></p>
-  <% else %>
-    <p class="infos">Hi buddy !!! would you like to update your profil first?</p>
-  <% end %>
-
-  <% if @user.photo.present? %>
-    <%= image_tag @user.photo, height: 50, width: 50, crop: :fill %>
-  <% end %>
-  <div class="infos">
-    <%= render 'form' %>
+<% if @user.photo == nil %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+    <div class="container">
+      <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
+      <p>Change your life and learn to code at one of our campuses around the world.</p>
+      <a class="btn btn-flat" href="#">Apply now</a>
+    </div>
   </div>
-  <h3 class="title">SONGBOOK</h3>
-
-  <% if @user.songs.present? %>
-    <% @user.songs.each do |s| %>
-      <%= link_to s do %>
-        <p class="infos"><%= s.title %></p><br>
+<% else %>
+  <div class="banner" style="padding-top: 60px; background-image: url(<%= rails_blob_url(@user.photo) %>)">
+    <div class="container">
+      <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
+      <% if @user.name? %>
+        <p class="infos"><%= @user.name %></p>
+        <p class="infos"><%= @user.email %></p>
+      <% else %>
+        <p class="infos">Hi buddy !!! would you like to update your profil first?</p>
       <% end %>
+      <div class="infos">
+        <%= render 'form' %>
+      </div>
+    <h3 class="title">SONGBOOK</h3>
+    <% if @user.songs.present? %>
+      <% @user.songs.each do |s| %>
+        <%= link_to s do %>
+          <p class="infos"><%= s.title %></p><br>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p class="infos">no song yet</p>
     <% end %>
-  <% else %>
-    <p class="infos">no song yet</p>
-  <% end %>
-  <p class="infos"><%= link_to 'create a new song', new_song_path %></p>
-</div>
+    <p class="infos"><%= link_to 'create a new song', new_song_path %></p>
+    </div>
+  </div>
+<% end %>
+
