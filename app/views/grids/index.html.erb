@@ -1,487 +1,490 @@
 <div class="container">
-  <%= link_to song_path(@song) do %>
-    <h1 class="title"><%= @song.title.capitalize %></h1>
-  <% end %>
-  <% intro = [] %>
-  <% verse = [] %>
-  <% prechorus = [] %>
-  <% chorus = [] %>
-  <% bridge = [] %>
-  <% casse = [] %>
-  <% solo = [] %>
-  <% outro = [] %>
-  <% b = @song.grids.sort_by { |grid| grid[:grid_location] } %>
-    <% b.each do |grid| %>
-      <% if grid.section.id == 1 %>
-        <% intro << grid %>
-      <% end %>
-      <% if grid.section.id == 2 %>
-        <% verse << grid %>
-      <% end %>
-      <% if grid.section.id == 3 %>
-        <% prechorus << grid %>
-      <% end %>
-      <% if grid.section.id == 4 %>
-        <% chorus << grid %>
-      <% end %>
-      <% if grid.section.id == 5 %>
-        <% bridge << grid %>
-      <% end %>
-      <% if grid.section.id == 6 %>
-        <% casse << grid %>
-      <% end %>
-      <% if grid.section.id == 7 %>
-        <% solo << grid %>
-      <% end %>
-      <% if grid.section.id == 8 %>
-        <% outro << grid %>
-      <% end %>
+  <div class="grid-page">
+    <%= link_to song_path(@song) do %>
+      <h1 class="title"><%= @song.title.capitalize %></h1>
     <% end %>
-    <% if intro.empty? == false %>
-      <h4 class="title">INTRO</h4>
-      <div class="row">
-        <% intro.each do |grid| %>
-          <%= link_to edit_song_grid_path(@song, grid) do %>
-            <div class='grid'>
-              <div class='grid-info'>
-                <% if grid.type.present? %>
-                  <% case grid.type.id %>
-                    <% when 1 %>
-                      <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 140, crop: :fit, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
-                        <div class="first-details"><%= grid.musical_note.name %><%= grid.musical_scale.name %></div>
-                      <% end %>
-                    <% when 2 %>
-                      <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 140, crop: :fit, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
-                        <div class="second-details"><%= grid.musical_note.name %><%= grid.musical_scale.name %></div>
-                        <div class="second-details-2"><%= grid.second_musical_note.name %><%= grid.second_musical_scale.name %></div>
-                      <% end %>
-                    <% when 3 %>
-                      <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 140, crop: :fit, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
-                        <div class="third-details"><%= grid.musical_note.name %><%= grid.musical_scale.name %></div>
-                        <div class="third-details-2"><%= grid.second_musical_note.name %><%= grid.second_musical_scale.name %></div>
-                        <div class="third-details-3"><%= grid.third_musical_note.name %><%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% when 4 %>
-                      <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 140, crop: :fit, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
-                        <div class="fourth-details"><%= grid.musical_note.name %><%= grid.musical_scale.name %></div>
-                        <div class="fourth-details-2"><%= grid.second_musical_note.name %><%= grid.second_musical_scale.name %></div>
-                        <div class="fourth-details-3"><%= grid.third_musical_note.name %><%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% else %>
-                      <%= cl_image_tag("4_x5kbei.png", height:120, width: 140, crop: :fit, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
-                        <div class="fifth-details"><%= grid.musical_note.name %><%= grid.musical_scale.name %></div>
-                        <div class="fifth-details-2"><%= grid.second_musical_note.name %><%= grid.second_musical_scale.name %></div>
-                        <div class="fifth-details-3"><%= grid.third_musical_note.name %><%= grid.third_musical_scale.name %></div>
-                        <div class="fifth-details-4"><%= grid.fourth_musical_note.name %><%= grid.fourth_musical_scale.name %></div>
-                      <% end %>
-                  <% end %>
-                <% end %>
-                <% if grid.grid_location.present? %>
-                  <div class="list-group-item"><%= grid.grid_location %></div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+    <% intro = [] %>
+    <% verse = [] %>
+    <% prechorus = [] %>
+    <% chorus = [] %>
+    <% bridge = [] %>
+    <% casse = [] %>
+    <% solo = [] %>
+    <% outro = [] %>
+    <% b = @song.grids.sort_by { |grid| grid[:grid_location] } %>
+      <% b.each do |grid| %>
+        <% if grid.section.id == 1 %>
+          <% intro << grid %>
         <% end %>
-      </div>
-    <% end %>
-    <% if verse.empty? == false %>
-      <h4 class="title">VERSE</h4>
-      <div class="row">
-        <% verse.each do |grid| %>
-          <%= link_to edit_song_grid_path(@song, grid) do %>
-            <div class='grid col-lg-12'>
-              <div class='grid-info'>
-                <% if grid.location.present? %>
-                  <div class="list-group-item"><%= grid.location %></div>
-                <% end %>
-                <% if grid.type.present? %>
-                  <% case grid.type.id %>
-                    <% when 1 %>
-                      <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
-                        <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                      <% end %>
-                    <% when 2 %>
-                      <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
-                        <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                      <% end %>
-                    <% when 3 %>
-                      <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
-                        <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% when 4 %>
-                      <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
-                        <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% else %>
-                      <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
-                        <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                        <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
-                      <% end %>
-                  <% end %>
-                <% end %>
-                <% if grid.grid_location.present? %>
-                  <div class="list-group-item"><%= grid.grid_location %></div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+        <% if grid.section.id == 2 %>
+          <% verse << grid %>
         <% end %>
-      </div>
-    <% end %>
-    <% if prechorus.empty? == false %>
-      <h4 class="title">PRECHORUS</h4>
-      <div class="row">
-        <% prechorus.each do |grid| %>
-          <%= link_to edit_song_grid_path(@song, grid) do %>
-            <div class='grid col-lg-12'>
-              <div class='grid-info'>
-                <% if grid.location.present? %>
-                  <div class="list-group-item"><%= grid.location %></div>
-                <% end %>
-                <% if grid.type.present? %>
-                  <% case grid.type.id %>
-                    <% when 1 %>
-                      <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
-                        <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                      <% end %>
-                    <% when 2 %>
-                      <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
-                        <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                      <% end %>
-                    <% when 3 %>
-                      <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
-                        <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% when 4 %>
-                      <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
-                        <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% else %>
-                      <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
-                        <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                        <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
-                      <% end %>
-                  <% end %>
-                <% end %>
-                <% if grid.grid_location.present? %>
-                  <div class="list-group-item"><%= grid.grid_location %></div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+        <% if grid.section.id == 3 %>
+          <% prechorus << grid %>
         <% end %>
-      </div>
-    <% end %>
-    <% if chorus.empty? == false %>
-      <h4 class="title">CHORUS</h4>
-      <div class="row">
-        <% chorus.each do |grid| %>
-          <%= link_to edit_song_grid_path(@song, grid) do %>
-            <div class='grid col-lg-12'>
-              <div class='grid-info'>
-                <% if grid.location.present? %>
-                  <div class="list-group-item"><%= grid.location %></div>
-                <% end %>
-                <% if grid.type.present? %>
-                  <% case grid.type.id %>
-                    <% when 1 %>
-                      <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
-                        <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                      <% end %>
-                    <% when 2 %>
-                      <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
-                        <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                      <% end %>
-                    <% when 3 %>
-                      <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
-                        <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% when 4 %>
-                      <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
-                        <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% else %>
-                      <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
-                        <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                        <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
-                      <% end %>
-                  <% end %>
-                <% end %>
-                <% if grid.grid_location.present? %>
-                  <div class="list-group-item"><%= grid.grid_location %></div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+        <% if grid.section.id == 4 %>
+          <% chorus << grid %>
         <% end %>
-      </div>
-    <% end %>
-    <% if bridge.empty? == false %>
-      <h4 class="title">BRIDGE</h4>
-      <div class="row">
-        <% bridge.each do |grid| %>
-          <%= link_to edit_song_grid_path(@song, grid) do %>
-            <div class='grid col-lg-12'>
-              <div class='grid-info'>
-                <% if grid.location.present? %>
-                  <div class="list-group-item"><%= grid.location %></div>
-                <% end %>
-                <% if grid.type.present? %>
-                  <% case grid.type.id %>
-                    <% when 1 %>
-                      <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
-                        <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                      <% end %>
-                    <% when 2 %>
-                      <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
-                        <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                      <% end %>
-                    <% when 3 %>
-                      <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
-                        <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% when 4 %>
-                      <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
-                        <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% else %>
-                      <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
-                        <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                        <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
-                      <% end %>
-                  <% end %>
-                <% end %>
-                <% if grid.grid_location.present? %>
-                  <div class="list-group-item"><%= grid.grid_location %></div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+        <% if grid.section.id == 5 %>
+          <% bridge << grid %>
         <% end %>
-      </div>
-    <% end %>
-    <% if casse.empty? == false %>
-      <h4 class="title">BREAK</h4>
-      <div class="row">
-        <% casse.each do |grid| %>
-          <%= link_to edit_song_grid_path(@song, grid) do %>
-            <div class='grid col-lg-12'>
-              <div class='grid-info'>
-                <% if grid.location.present? %>
-                  <div class="list-group-item"><%= grid.location %></div>
-                <% end %>
-                <% if grid.type.present? %>
-                  <% case grid.type.id %>
-                    <% when 1 %>
-                      <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
-                        <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                      <% end %>
-                    <% when 2 %>
-                      <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
-                        <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                      <% end %>
-                    <% when 3 %>
-                      <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
-                        <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% when 4 %>
-                      <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
-                        <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% else %>
-                      <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
-                        <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                        <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
-                      <% end %>
-                  <% end %>
-                <% end %>
-                <% if grid.grid_location.present? %>
-                  <div class="list-group-item"><%= grid.grid_location %></div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+        <% if grid.section.id == 6 %>
+          <% casse << grid %>
         <% end %>
-      </div>
-    <% end %>
-    <% if solo.empty? == false %>
-      <h4 class="title">SOLO</h4>
-      <div class="row">
-        <% solo.each do |grid| %>
-          <%= link_to edit_song_grid_path(@song, grid) do %>
-            <div class='grid col-lg-12'>
-              <div class='grid-info'>
-                <% if grid.location.present? %>
-                  <div class="list-group-item"><%= grid.location %></div>
-                <% end %>
-                <% if grid.type.present? %>
-                  <% case grid.type.id %>
-                    <% when 1 %>
-                      <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
-                        <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                      <% end %>
-                    <% when 2 %>
-                      <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
-                        <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                      <% end %>
-                    <% when 3 %>
-                      <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
-                        <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% when 4 %>
-                      <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
-                        <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% else %>
-                      <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
-                        <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                        <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
-                      <% end %>
-                  <% end %>
-                <% end %>
-                <% if grid.grid_location.present? %>
-                  <div class="list-group-item"><%= grid.grid_location %></div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+        <% if grid.section.id == 7 %>
+          <% solo << grid %>
         <% end %>
-      </div>
-    <% end %>
-    <% if outro.empty? == false %>
-      <h4 class="title">OUTRO</h4>
-      <div class="row">
-        <% outro.each do |grid| %>
-          <%= link_to edit_song_grid_path(@song, grid) do %>
-            <div class='grid col-lg-12'>
-              <div class='grid-info'>
-                <% if grid.location.present? %>
-                  <div class="list-group-item"><%= grid.location %></div>
-                <% end %>
-                <% if grid.type.present? %>
-                  <% case grid.type.id %>
-                    <% when 1 %>
-                      <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
-                        <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                      <% end %>
-                    <% when 2 %>
-                      <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
-                        <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                      <% end %>
-                    <% when 3 %>
-                      <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
-                      <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
-                        <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% when 4 %>
-                      <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
-                        <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                      <% end %>
-                    <% else %>
-                      <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
-                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
-                        <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
-                        <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
-                        <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
-                        <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
-                      <% end %>
-                  <% end %>
-                <% end %>
-                <% if grid.grid_location.present? %>
-                  <div class="list-group-item"><%= grid.grid_location %></div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+        <% if grid.section.id == 8 %>
+          <% outro << grid %>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
+      <% if intro.empty? == false %>
+        <h4 class="title">INTRO</h4>
+        <div class="row">
+          <% intro.each do |grid| %>
+            <%= link_to edit_song_grid_path(@song, grid) do %>
+              <div class='grid'>
+                <div class='grid-info'>
+                  <% if grid.type.present? %>
+                    <% case grid.type.id %>
+                      <% when 1 %>
+                        <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 140, crop: :fit, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
+                          <div class="first-details"><%= grid.musical_note.name %><%= grid.musical_scale.name %></div>
+                        <% end %>
+                      <% when 2 %>
+                        <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 140, crop: :fit, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
+                          <div class="second-details"><%= grid.musical_note.name %><%= grid.musical_scale.name %></div>
+                          <div class="second-details-2"><%= grid.second_musical_note.name %><%= grid.second_musical_scale.name %></div>
+                        <% end %>
+                      <% when 3 %>
+                        <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 140, crop: :fit, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
+                          <div class="third-details"><%= grid.musical_note.name %><%= grid.musical_scale.name %></div>
+                          <div class="third-details-2"><%= grid.second_musical_note.name %><%= grid.second_musical_scale.name %></div>
+                          <div class="third-details-3"><%= grid.third_musical_note.name %><%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% when 4 %>
+                        <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 140, crop: :fit, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
+                          <div class="fourth-details"><%= grid.musical_note.name %><%= grid.musical_scale.name %></div>
+                          <div class="fourth-details-2"><%= grid.second_musical_note.name %><%= grid.second_musical_scale.name %></div>
+                          <div class="fourth-details-3"><%= grid.third_musical_note.name %><%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% else %>
+                        <%= cl_image_tag("4_x5kbei.png", height:120, width: 140, crop: :fit, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
+                          <div class="fifth-details"><%= grid.musical_note.name %><%= grid.musical_scale.name %></div>
+                          <div class="fifth-details-2"><%= grid.second_musical_note.name %><%= grid.second_musical_scale.name %></div>
+                          <div class="fifth-details-3"><%= grid.third_musical_note.name %><%= grid.third_musical_scale.name %></div>
+                          <div class="fifth-details-4"><%= grid.fourth_musical_note.name %><%= grid.fourth_musical_scale.name %></div>
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                  <% if grid.grid_location.present? %>
+                    <div class="list-group-item"><%= grid.grid_location %></div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if verse.empty? == false %>
+        <h4 class="title">VERSE</h4>
+        <div class="row">
+          <% verse.each do |grid| %>
+            <%= link_to edit_song_grid_path(@song, grid) do %>
+              <div class='grid col-lg-12'>
+                <div class='grid-info'>
+                  <% if grid.location.present? %>
+                    <div class="list-group-item"><%= grid.location %></div>
+                  <% end %>
+                  <% if grid.type.present? %>
+                    <% case grid.type.id %>
+                      <% when 1 %>
+                        <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
+                          <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                        <% end %>
+                      <% when 2 %>
+                        <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
+                          <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                        <% end %>
+                      <% when 3 %>
+                        <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
+                          <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% when 4 %>
+                        <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
+                          <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% else %>
+                        <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
+                          <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                          <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                  <% if grid.grid_location.present? %>
+                    <div class="list-group-item"><%= grid.grid_location %></div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if prechorus.empty? == false %>
+        <h4 class="title">PRECHORUS</h4>
+        <div class="row">
+          <% prechorus.each do |grid| %>
+            <%= link_to edit_song_grid_path(@song, grid) do %>
+              <div class='grid col-lg-12'>
+                <div class='grid-info'>
+                  <% if grid.location.present? %>
+                    <div class="list-group-item"><%= grid.location %></div>
+                  <% end %>
+                  <% if grid.type.present? %>
+                    <% case grid.type.id %>
+                      <% when 1 %>
+                        <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
+                          <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                        <% end %>
+                      <% when 2 %>
+                        <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
+                          <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                        <% end %>
+                      <% when 3 %>
+                        <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
+                          <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% when 4 %>
+                        <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
+                          <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% else %>
+                        <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
+                          <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                          <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                  <% if grid.grid_location.present? %>
+                    <div class="list-group-item"><%= grid.grid_location %></div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if chorus.empty? == false %>
+        <h4 class="title">CHORUS</h4>
+        <div class="row">
+          <% chorus.each do |grid| %>
+            <%= link_to edit_song_grid_path(@song, grid) do %>
+              <div class='grid col-lg-12'>
+                <div class='grid-info'>
+                  <% if grid.location.present? %>
+                    <div class="list-group-item"><%= grid.location %></div>
+                  <% end %>
+                  <% if grid.type.present? %>
+                    <% case grid.type.id %>
+                      <% when 1 %>
+                        <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
+                          <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                        <% end %>
+                      <% when 2 %>
+                        <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
+                          <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                        <% end %>
+                      <% when 3 %>
+                        <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
+                          <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% when 4 %>
+                        <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
+                          <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% else %>
+                        <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
+                          <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                          <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                  <% if grid.grid_location.present? %>
+                    <div class="list-group-item"><%= grid.grid_location %></div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if bridge.empty? == false %>
+        <h4 class="title">BRIDGE</h4>
+        <div class="row">
+          <% bridge.each do |grid| %>
+            <%= link_to edit_song_grid_path(@song, grid) do %>
+              <div class='grid col-lg-12'>
+                <div class='grid-info'>
+                  <% if grid.location.present? %>
+                    <div class="list-group-item"><%= grid.location %></div>
+                  <% end %>
+                  <% if grid.type.present? %>
+                    <% case grid.type.id %>
+                      <% when 1 %>
+                        <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
+                          <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                        <% end %>
+                      <% when 2 %>
+                        <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
+                          <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                        <% end %>
+                      <% when 3 %>
+                        <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
+                          <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% when 4 %>
+                        <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
+                          <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% else %>
+                        <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
+                          <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                          <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                  <% if grid.grid_location.present? %>
+                    <div class="list-group-item"><%= grid.grid_location %></div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if casse.empty? == false %>
+        <h4 class="title">BREAK</h4>
+        <div class="row">
+          <% casse.each do |grid| %>
+            <%= link_to edit_song_grid_path(@song, grid) do %>
+              <div class='grid col-lg-12'>
+                <div class='grid-info'>
+                  <% if grid.location.present? %>
+                    <div class="list-group-item"><%= grid.location %></div>
+                  <% end %>
+                  <% if grid.type.present? %>
+                    <% case grid.type.id %>
+                      <% when 1 %>
+                        <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
+                          <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                        <% end %>
+                      <% when 2 %>
+                        <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
+                          <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                        <% end %>
+                      <% when 3 %>
+                        <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
+                          <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% when 4 %>
+                        <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
+                          <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% else %>
+                        <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
+                          <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                          <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                  <% if grid.grid_location.present? %>
+                    <div class="list-group-item"><%= grid.grid_location %></div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if solo.empty? == false %>
+        <h4 class="title">SOLO</h4>
+        <div class="row">
+          <% solo.each do |grid| %>
+            <%= link_to edit_song_grid_path(@song, grid) do %>
+              <div class='grid col-lg-12'>
+                <div class='grid-info'>
+                  <% if grid.location.present? %>
+                    <div class="list-group-item"><%= grid.location %></div>
+                  <% end %>
+                  <% if grid.type.present? %>
+                    <% case grid.type.id %>
+                      <% when 1 %>
+                        <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
+                          <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                        <% end %>
+                      <% when 2 %>
+                        <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
+                          <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                        <% end %>
+                      <% when 3 %>
+                        <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
+                          <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% when 4 %>
+                        <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
+                          <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% else %>
+                        <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
+                          <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                          <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                  <% if grid.grid_location.present? %>
+                    <div class="list-group-item"><%= grid.grid_location %></div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if outro.empty? == false %>
+        <h4 class="title">OUTRO</h4>
+        <div class="row">
+          <% outro.each do |grid| %>
+            <%= link_to edit_song_grid_path(@song, grid) do %>
+              <div class='grid col-lg-12'>
+                <div class='grid-info'>
+                  <% if grid.location.present? %>
+                    <div class="list-group-item"><%= grid.location %></div>
+                  <% end %>
+                  <% if grid.type.present? %>
+                    <% case grid.type.id %>
+                      <% when 1 %>
+                        <%= cl_image_tag("Single_vkhxvm.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.type.id == 1 %>
+                          <div class="first-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                        <% end %>
+                      <% when 2 %>
+                        <%= cl_image_tag("couple_kcyrpk.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.type.id == 2 %>
+                          <div class="second-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="second-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                        <% end %>
+                      <% when 3 %>
+                        <%= cl_image_tag("single_then_couple_ul2tz3", height:120, width: 180, crop: :fill, class: "grid") %>
+                        <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 3 %>
+                          <div class="third-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="third-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="third-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% when 4 %>
+                        <%= cl_image_tag("Couple_then_single_shu6zv.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.type.id == 4 %>
+                          <div class="fourth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fourth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fourth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                        <% end %>
+                      <% else %>
+                        <%= cl_image_tag("4_x5kbei.png", height:120, width: 180, crop: :fill, class: "grid") %>
+                          <% if grid.musical_note.present? && grid.musical_scale.present? && grid.second_musical_note.present? && grid.second_musical_scale.present? && grid.third_musical_note.present? && grid.third_musical_scale.present? && grid.fourth_musical_note.present? && grid.fourth_musical_scale.present? && grid.type.id == 5 %>
+                          <div class="fifth-details"><%= grid.musical_note.name %> <%= grid.musical_scale.name %></div>
+                          <div class="fifth-details-2"><%= grid.second_musical_note.name %> <%= grid.second_musical_scale.name %></div>
+                          <div class="fifth-details-3"><%= grid.third_musical_note.name %> <%= grid.third_musical_scale.name %></div>
+                          <div class="fifth-details-4"><%= grid.fourth_musical_note.name %> <%= grid.fourth_musical_scale.name %></div>
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                  <% if grid.grid_location.present? %>
+                    <div class="list-group-item"><%= grid.grid_location %></div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat" %>
+    </div>
   </div>
 </div>
 

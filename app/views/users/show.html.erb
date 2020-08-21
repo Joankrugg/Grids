@@ -19,17 +19,21 @@
       <div class="infos">
         <%= render 'form' %>
       </div>
-    <h3 class="title">SONGBOOK</h3>
-    <% if @user.songs.present? %>
-      <% @user.songs.each do |s| %>
-        <%= link_to s do %>
-          <p class="infos"><%= s.title %></p><br>
+      <h3 class="title">SONGBOOK</h3>
+      <% if @user.songs.present? %>
+        <% @user.songs.each do |s| %>
+          <%= link_to s do %>
+            <p class="infos"><%= s.title %></p><br>
+          <% end %>
         <% end %>
+      <% else %>
+        <p class="infos">no song yet</p>
       <% end %>
-    <% else %>
-      <p class="infos">no song yet</p>
-    <% end %>
-    <p class="infos"><%= link_to 'create a new song', new_song_path %></p>
+      <%= link_to new_song_path do %>
+        <div class="btn btn-flat">
+          create a new song
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>

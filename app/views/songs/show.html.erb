@@ -1,15 +1,18 @@
-<h1 class="title"><%= @song.title %></h1>
-<br>
+<div class="container">
+  <div class="song-page">
+    <%= link_to song_grids_path(@song) do  %>
+      <h1 class="title"><%= @song.title.capitalize %></h1>
+    <% end %>
+    <br>
 
 
-<div class="video">
-  <iframe src='https://www.youtube.com/embed/<%= @song.youtube_link[32..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' height='600' width='760' class="img-fluid" alt="Responsive image" frameborder='0' allowfullscreen></iframe>
+    <div class="video-responsive">
+      <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= @song.youtube_link[32..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <br>
+    <% if @song.user == current_user %>
+      <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat" %>
+      <p class="infos"><%= link_to 'destroy', song_path(@song), class: "call-to-action btn-medium btn last-item", method: :delete, data: { confirm: "Are you sure?" } %></p>
+    <% end %>
+  </div>
 </div>
-<br>
-<p class="infos"><%= link_to 'Voir la grid', song_grids_path(@song) %></p>
-<br>
-<% if @song.user == current_user %>
-  <p class="infos"><%= link_to 'create a grid', new_song_grid_path(@song) %></p>
-  <p class="infos"><%= link_to 'destroy', song_path(@song), class: "call-to-action btn-medium btn last-item", method: :delete, data: { confirm: "Are you sure?" } %></p>
-<% end %>
-
