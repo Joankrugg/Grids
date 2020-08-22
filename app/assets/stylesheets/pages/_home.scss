@@ -22,13 +22,15 @@ body, html {
   color: white;
 }
 
+.on-white{
+  text-color: black;
+}
 
 .call-to-action{
-  padding-top: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  height: 160px;
 }
 
 .slogan{

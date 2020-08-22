@@ -1,30 +1,30 @@
 <div class="container">
   <div class="user-page">
     <h1 class="title">Les Zicos</h1>
-    <div class="cards">
-      <% @users.each do |u| %>
-        <% if u.photo.present? %>
-          <%= link_to u do %>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @users.each do |u| %>
+      <div class="col-lg-3 col-sm-4">
+        <%= link_to u do %>
+          <% unless u.photo.present? %>
             <div class="card">
-              <div class="user-card"><%= u.photo %></div>
+              <div class="user-card"><%= cl_image_tag ('v1598080266/preservation_hall_jazz_band_isixvg.jpg'), class: "img-fluid" %></div>
               <div class="container">
-                <h4><%= u.email %></h4>
-                <p>Architect & Engineer</p>
+                <p><%= u.email %></p>
               </div>
             </div>
-          <% end %>
-        <% else %>
-          <%= link_to u do %>
+          <% else %>
             <div class="card">
-              <img src="img_avatar.png" alt="Avatar" style="width:100%">
+              <div class="user-card"><%= image_tag u.photo, class: "img-fluid" %></div>
               <div class="container">
-                <h4><%= u.email %></h4>
-                <p>Architect & Engineer</p>
+                <p><%= u.email %></p>
               </div>
             </div>
           <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

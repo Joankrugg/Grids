@@ -1,40 +1,42 @@
 <% unless @user.photo.present? %>
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/da2krghvd/image/upload/v1598080454/Montreal-Jazz-Band_dzf8jf.jpg);">
     <div class="container">
-      <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-      <p>Change your life and learn to code at one of our campuses around the world.</p>
-      <a class="btn btn-flat" href="#">Apply now</a>
+      <h1 style="text-align: center">Hi buddy !!! would you like to update your profil first?</h1>
+      <div class="call-to-action">
+        <%= render 'form' %>
+      </div>
     </div>
   </div>
 <% else %>
   <div class="banner" style="padding-top: 60px; background-image: url(<%= rails_blob_url(@user.photo) %>)">
     <div class="container">
-      <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
       <% if @user.name? %>
-        <p class="infos"><%= @user.name %></p>
-        <p class="infos"><%= @user.email %></p>
-      <% else %>
-        <p class="infos">Hi buddy !!! would you like to update your profil first?</p>
+        <h1 style="text-align: center"><%= @user.name %></h1>
       <% end %>
-      <div class="infos">
+      <p class="infos"><%= @user.email %></p>
+      <div class="call-to-action">
         <%= render 'form' %>
-      </div>
-      <h3 class="title">SONGBOOK</h3>
-      <% if @user.songs.present? %>
-        <% @user.songs.each do |s| %>
-          <%= link_to s do %>
-            <p class="infos"><%= s.title %></p><br>
-          <% end %>
+        <%= link_to new_song_path do %>
+          <div class="btn btn-flat">
+            New song
+          </div>
         <% end %>
-      <% else %>
-        <p class="infos">no song yet</p>
-      <% end %>
-      <%= link_to new_song_path do %>
-        <div class="btn btn-flat">
-          create a new song
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
 <% end %>
+<div class="container songbook">
+  <h3 class="title">SONGBOOK</h3>
+    <% if @user.songs.present? %>
+      <% @user.songs.each do |s| %>
+        <%= link_to s do %>
+          <p class="infos on-white"><%= s.title %></p><br>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p class="infos on-white">no song yet</p>
+    <% end %>
+  </div>
+</div>
+
 

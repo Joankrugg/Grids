@@ -1,6 +1,21 @@
-<h1 class="title">Songs index</h1>
-<% @songs.each do |s| %>
-  <%= link_to s do  %>
-    <p class="infos"><%= s.title %></p>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="user-page">
+    <h1 class="title">Songs</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @songs.each do |s| %>
+      <div class="col-lg-3 col-sm-4">
+        <%= link_to s do %>
+          <% if s.youtube_link.present? %>
+            <div class="video-responsive">
+              <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= s.youtube_link[32..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <%= s.title %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
