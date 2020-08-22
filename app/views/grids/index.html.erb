@@ -483,7 +483,9 @@
           <% end %>
         </div>
       <% end %>
-      <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat" %>
+      <% if @song.user == current_user %>
+        <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat" %>
+      <% end %>
     </div>
   </div>
 </div>
