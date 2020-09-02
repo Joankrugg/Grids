@@ -3,6 +3,7 @@
   background: white;
   position: fixed;
   width: 100%;
+  z-index: 1000;
 
 }
 
@@ -15,4 +16,13 @@
 }
 .login-sub-nav{
   padding-bottom: 150px;
+}
+
+.brand{
+color: grey;
+}
+
+.brand:hover{
+text-decoration: none;
+pointer: cursor;
 }
