@@ -19,10 +19,14 @@
 }
 
 .brand{
-color: grey;
+  color: grey;
 }
 
 .brand:hover{
-text-decoration: none;
-pointer: cursor;
+  text-decoration: none;
+  pointer: cursor;
 }
+.modal-backdrop {
+  z-index: -1;
+}
+
