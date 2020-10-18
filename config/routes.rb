@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/user' => "pages#home", :as => :user_root
   root to: 'pages#home'
   resources :users, only: [:index, :show, :edit, :update, :destroy]
+  resources :personal_messages, only: [:new, :create]
+  resources :conversations, only: [:index, :show]
   resources :songs do
     resources :grids
   end

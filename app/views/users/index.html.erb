@@ -14,6 +14,7 @@
               <div class="container">
                 <p><%= u.email %></p>
               </div>
+              <%= u.surname %> | <%= link_to 'send a message', new_personal_message_path(receiver_id: u) %>
             </div>
           <% else %>
             <div class="card">
@@ -21,6 +22,7 @@
               <div class="container">
                 <p><%= u.email %></p>
               </div>
+              <%= u.surname %> | <%= link_to 'send a message', new_personal_message_path(receiver_id: u) %>
             </div>
           <% end %>
         <% end %>
