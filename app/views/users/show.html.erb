@@ -5,6 +5,11 @@
         <h1 style="text-align: center">Hi buddy !!! would you like to update your profil first?</h1>
         <div class="call-to-action">
           <%= render 'form' %>
+          <%= link_to new_song_path do %>
+            <div class="btn btn-flat">
+              New song
+            </div>
+          <% end %>
         </div>
       <% else %>
         <h1 style="text-align: center">I'm about to edit my profil but I need some time leave me a message</h1>
@@ -20,11 +25,6 @@
       <p class="infos"><%= @user.email %></p>
       <div class="call-to-action">
         <%= render 'form' %>
-        <%= link_to new_song_path do %>
-          <div class="btn btn-flat">
-            New song
-          </div>
-        <% end %>
       </div>
     </div>
   </div>
