@@ -1,5 +1,15 @@
-<%= simple_form_for @song do |f| %>
-  <%= f.input :title %>
-  <%= f.input :youtube_link %>
-  <%= f.submit %>
-<% end %>
+<div class="login-sub-nav"></div>
+<div class="container content">
+  <div class="col-xs-12">
+    <h2 class="infos">New Song</h2>
+    <%= simple_form_for @song do |f| %>
+      <div class="form-inputs">
+        <div class="infos"><%= f.input :title %></div>
+        <div class="infos"><%= f.input :youtube_link %></div>
+        <div class="infos">
+          <%= f.button :submit, "Create Song", class: "btn btn-flat log"  %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

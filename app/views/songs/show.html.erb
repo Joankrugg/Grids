@@ -11,6 +11,7 @@
     <% if @song.user == current_user %>
       <%= link_to 'edit song', edit_song_path(@song), class: "btn btn-flat" %>
       <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat" %>
+      <%= link_to 'see grids', song_grids_path(@song), class: "btn btn-flat" %>
       <p class="infos"><%= link_to 'destroy', song_path(@song), class: "call-to-action btn-medium btn last-item", method: :delete, data: { confirm: "Are you sure?" } %></p>
     <% end %>
   </div>

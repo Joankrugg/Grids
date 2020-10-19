@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :songs do
     resources :grids
   end
+  resources :grids, only: [ :destroy ]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :boxes, only: [:destroy]
 end

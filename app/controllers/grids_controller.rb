@@ -1,6 +1,6 @@
 class GridsController < ApplicationController
-  before_action :get_song
-  before_action :set_grid, only: [:show, :edit, :update, :destroy]
+  before_action :get_song, except: [:destroy]
+  before_action :set_grid, only: [:show, :edit, :update]
 
 
 
@@ -40,7 +40,11 @@ class GridsController < ApplicationController
     end
   end
 
-
+  def destroy
+    @grid = Grid.find(params[:id])
+    @grid.destroy
+    redirect_to song_path(@grid.song)
+  end
 
 
   private

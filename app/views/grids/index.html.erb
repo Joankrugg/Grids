@@ -84,6 +84,10 @@
                   <% end %>
                   <% if grid.grid_location.present? %>
                     <div class="list-group-item"><%= grid.grid_location %></div>
+                    <%= link_to "Remove",
+                  song_grid_path(@song, grid),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
                   <% end %>
                 </div>
               </div>

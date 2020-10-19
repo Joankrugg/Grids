@@ -25,6 +25,11 @@
       <p class="infos"><%= @user.email %></p>
       <div class="call-to-action">
         <%= render 'form' %>
+        <%= link_to new_song_path do %>
+          <div class="btn btn-flat">
+            New song
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
