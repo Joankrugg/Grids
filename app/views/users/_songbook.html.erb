@@ -1,0 +1,42 @@
+<div class="container" style="margin-top:30px">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2>About Me</h2>
+      <% if @user.photo.present? %>
+        <%= cl_image_tag @user.photo.key, class: "img-fluid profil-picture", height: 250, width: 250, crop: :fill %>
+      <% else %>
+        <%= cl_image_tag "https://res.cloudinary.com/da2krghvd/image/upload/v1598020963/19_C2_B0_International_Jazz_Festival_of_Punta_del_Este_-_150111-2052-jikatu__2816077813707_29_drogug.jpg", class: "img-fluid profil-picture", height: 250, width: 250, crop: :fill %> %>
+      <% end %>
+      <p id="description"> Définis toi en une seule phrase </p>
+      <div class="container songbook">
+        <h2>Favorite genres</h2>
+        <h5>Liste des genres</h5>
+        <p>Instruments joués</p>
+        <h5>Liste des instruments</h5>
+      </div>
+      <hr class="d-sm-none">
+    </div>
+    <div class="col-sm-8 songbook songs">
+      <div>
+        <% if @user == current_user %>
+          <%= link_to new_song_path do %>
+            <div class="btn btn-flat log">
+              New song
+            </div>
+          <% end %>
+        <% else %>
+          <h3 style="color: white">My Songbook</h3>
+        <% end %>
+      </div>
+      <% if @user.songs.present? %>
+        <% @user.songs.each do |s| %>
+          <%= link_to s do %>
+            <%= s.title %><br>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p class="on-white">no song yet</p>
+      <% end %>
+    </div>
+  </div>
+</div>
