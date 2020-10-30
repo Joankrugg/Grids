@@ -11,8 +11,12 @@
       <div class="container songbook">
         <h2>Favorite genres</h2>
         <h5>Liste des genres</h5>
-        <p>Instruments joués</p>
-        <h5>Liste des instruments</h5>
+        <h2>Instruments joués</h2>
+        <% if @user.instruments.any? %>
+          <% @user.instruments.each do |i| %>
+            <h5><%= i.name %></h5>
+          <% end %>
+        <% end %>
       </div>
       <hr class="d-sm-none">
     </div>
