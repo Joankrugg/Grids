@@ -4,9 +4,15 @@
       <h3 class="title"><%= @song.title.capitalize %></h3>
     <% end %>
     <br>
-    <div class="video-responsive">
-      <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= @song.youtube_link[32..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+    <% if @song.youtube_link[8..15] == 'youtu.be' %>
+      <div class="video-responsive">
+        <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= @song.youtube_link[16..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    <% else %>
+      <div class="video-responsive">
+        <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= @song.youtube_link[32..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    <% end %>
     <br>
     <% if @song.user == current_user %>
       <%= link_to 'edit song', edit_song_path(@song), class: "btn btn-flat" %>
@@ -16,3 +22,4 @@
     <% end %>
   </div>
 </div>
+
