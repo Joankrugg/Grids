@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_154258) do
+ActiveRecord::Schema.define(version: 2020_10_30_110335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,21 @@ ActiveRecord::Schema.define(version: 2020_09_02_154258) do
     t.index ["third_musical_note_id"], name: "index_grids_on_third_musical_note_id"
     t.index ["third_musical_scale_id"], name: "index_grids_on_third_musical_scale_id"
     t.index ["type_id"], name: "index_grids_on_type_id"
+  end
+
+  create_table "instrument_stagings", force: :cascade do |t|
+    t.bigint "instrument_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["instrument_id"], name: "index_instrument_stagings_on_instrument_id"
+    t.index ["user_id"], name: "index_instrument_stagings_on_user_id"
+  end
+
+  create_table "instruments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "musical_notes", force: :cascade do |t|
@@ -177,6 +192,8 @@ ActiveRecord::Schema.define(version: 2020_09_02_154258) do
   add_foreign_key "grids", "third_musical_notes"
   add_foreign_key "grids", "third_musical_scales"
   add_foreign_key "grids", "types"
+  add_foreign_key "instrument_stagings", "instruments"
+  add_foreign_key "instrument_stagings", "users"
   add_foreign_key "personal_messages", "conversations"
   add_foreign_key "personal_messages", "users"
   add_foreign_key "songs", "users"

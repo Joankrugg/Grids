@@ -1,15 +1,13 @@
 <div class="banner">
+  <%= render 'songbook' %>
   <div class="container">
     <% if @user == current_user %>
-      <h1 style="text-align: center">Hi buddy !!! would you like to update your profil first?</h1>
+      <h1 style="text-align: center">You can perform actions on your account</h1>
       <div class="call-to-action">
         <%= render 'form' %>
       </div>
-    <% else %>
-      <h1 style="text-align: center">I'm about to edit my profil but I need some time leave me a message</h1>
     <% end %>
   </div>
-  <%= render 'songbook' %>
 </div>
 
 
