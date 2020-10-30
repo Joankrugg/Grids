@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :personal_messages, dependent: :destroy
   has_many :instrument_stagings
   has_many :instruments, through: :instrument_stagings
+  has_many :user_genres
+  has_many :genres, through: :user_genres
 
 
   def surname

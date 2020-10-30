@@ -10,7 +10,11 @@
       <p id="description"> Définis toi en une seule phrase </p>
       <div class="container songbook">
         <h2>Favorite genres</h2>
-        <h5>Liste des genres</h5>
+        <% if @user.genres.any? %>
+          <% @user.genres.each do |g| %>
+            <h5><%= g.name %></h5>
+          <% end %>
+        <% end %>
         <h2>Instruments joués</h2>
         <% if @user.instruments.any? %>
           <% @user.instruments.each do |i| %>
