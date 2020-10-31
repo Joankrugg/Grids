@@ -10,9 +10,15 @@
         <%= link_to s do %>
           <% if s.youtube_link.present? %>
             <div class="card">
-              <div class="video-responsive">
-                <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= s.youtube_link[32..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
+              <% if s.youtube_link[8..15] == 'youtu.be' %>
+                <div class="video-responsive">
+                  <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= s.youtube_link[16..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+              <% else %>
+                <div class="video-responsive">
+                  <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= s.youtube_link[32..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+              <% end %>
               <div class="infos"><%= s.title.capitalize %></div>
             </div>
           <% end %>
