@@ -83,11 +83,9 @@
                     <% end %>
                   <% end %>
                   <% if grid.grid_location.present? %>
-                    <div class="list-group-item"><%= grid.grid_location %></div>
-                    <%= link_to "Remove",
-                  song_grid_path(@song, grid),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
+                    <div class="list-group-item"><%= grid.grid_location %>
+                      <%= link_to "Remove", song_grid_path(@song, grid), method: :delete, data: { confirm: "Are you sure?" } %>
+                    </div>
                   <% end %>
                 </div>
               </div>
@@ -95,16 +93,14 @@
           <% end %>
         </div>
       <% end %>
+
       <% if verse.empty? == false %>
         <h4 class="title">VERSE</h4>
         <div class="row">
           <% verse.each do |grid| %>
             <%= link_to edit_song_grid_path(@song, grid) do %>
-              <div class='grid col-lg-12'>
+              <div class='grid'>
                 <div class='grid-info'>
-                  <% if grid.location.present? %>
-                    <div class="list-group-item"><%= grid.location %></div>
-                  <% end %>
                   <% if grid.type.present? %>
                     <% case grid.type.id %>
                       <% when 1 %>
@@ -143,7 +139,9 @@
                     <% end %>
                   <% end %>
                   <% if grid.grid_location.present? %>
-                    <div class="list-group-item"><%= grid.grid_location %></div>
+                    <div class="list-group-item"><%= grid.grid_location %>
+                      <%= link_to "Remove", song_grid_path(@song, grid), method: :delete, data: { confirm: "Are you sure?" } %>
+                    </div>
                   <% end %>
                 </div>
               </div>
@@ -151,16 +149,14 @@
           <% end %>
         </div>
       <% end %>
+
       <% if prechorus.empty? == false %>
         <h4 class="title">PRECHORUS</h4>
         <div class="row">
           <% prechorus.each do |grid| %>
             <%= link_to edit_song_grid_path(@song, grid) do %>
-              <div class='grid col-lg-12'>
+              <div class='grid'>
                 <div class='grid-info'>
-                  <% if grid.location.present? %>
-                    <div class="list-group-item"><%= grid.location %></div>
-                  <% end %>
                   <% if grid.type.present? %>
                     <% case grid.type.id %>
                       <% when 1 %>
@@ -199,7 +195,9 @@
                     <% end %>
                   <% end %>
                   <% if grid.grid_location.present? %>
-                    <div class="list-group-item"><%= grid.grid_location %></div>
+                    <div class="list-group-item"><%= grid.grid_location %>
+                      <%= link_to "Remove", song_grid_path(@song, grid), method: :delete, data: { confirm: "Are you sure?" } %>
+                    </div>
                   <% end %>
                 </div>
               </div>
@@ -207,16 +205,14 @@
           <% end %>
         </div>
       <% end %>
+
       <% if chorus.empty? == false %>
         <h4 class="title">CHORUS</h4>
         <div class="row">
           <% chorus.each do |grid| %>
             <%= link_to edit_song_grid_path(@song, grid) do %>
-              <div class='grid col-lg-12'>
+              <div class='grid'>
                 <div class='grid-info'>
-                  <% if grid.location.present? %>
-                    <div class="list-group-item"><%= grid.location %></div>
-                  <% end %>
                   <% if grid.type.present? %>
                     <% case grid.type.id %>
                       <% when 1 %>
@@ -255,7 +251,10 @@
                     <% end %>
                   <% end %>
                   <% if grid.grid_location.present? %>
-                    <div class="list-group-item"><%= grid.grid_location %></div>
+                    <div class="list-group-item">
+                      <%= grid.grid_location %>
+                      <%= link_to "Remove", song_grid_path(@song, grid), method: :delete, data: { confirm: "Are you sure?" } %>
+                    </div>
                   <% end %>
                 </div>
               </div>
@@ -263,16 +262,14 @@
           <% end %>
         </div>
       <% end %>
+
       <% if bridge.empty? == false %>
         <h4 class="title">BRIDGE</h4>
         <div class="row">
           <% bridge.each do |grid| %>
             <%= link_to edit_song_grid_path(@song, grid) do %>
-              <div class='grid col-lg-12'>
+              <div class='grid'>
                 <div class='grid-info'>
-                  <% if grid.location.present? %>
-                    <div class="list-group-item"><%= grid.location %></div>
-                  <% end %>
                   <% if grid.type.present? %>
                     <% case grid.type.id %>
                       <% when 1 %>
@@ -311,7 +308,9 @@
                     <% end %>
                   <% end %>
                   <% if grid.grid_location.present? %>
-                    <div class="list-group-item"><%= grid.grid_location %></div>
+                    <div class="list-group-item"><%= grid.grid_location %>
+                      <%= link_to "Remove", song_grid_path(@song, grid), method: :delete, data: { confirm: "Are you sure?" } %>
+                    </div>
                   <% end %>
                 </div>
               </div>
@@ -319,16 +318,14 @@
           <% end %>
         </div>
       <% end %>
+
       <% if casse.empty? == false %>
         <h4 class="title">BREAK</h4>
         <div class="row">
           <% casse.each do |grid| %>
             <%= link_to edit_song_grid_path(@song, grid) do %>
-              <div class='grid col-lg-12'>
+              <div class='grid'>
                 <div class='grid-info'>
-                  <% if grid.location.present? %>
-                    <div class="list-group-item"><%= grid.location %></div>
-                  <% end %>
                   <% if grid.type.present? %>
                     <% case grid.type.id %>
                       <% when 1 %>
@@ -367,7 +364,9 @@
                     <% end %>
                   <% end %>
                   <% if grid.grid_location.present? %>
-                    <div class="list-group-item"><%= grid.grid_location %></div>
+                    <div class="list-group-item"><%= grid.grid_location %>
+                      <%= link_to "Remove", song_grid_path(@song, grid), method: :delete, data: { confirm: "Are you sure?" } %>
+                    </div>
                   <% end %>
                 </div>
               </div>
@@ -375,16 +374,14 @@
           <% end %>
         </div>
       <% end %>
+
       <% if solo.empty? == false %>
         <h4 class="title">SOLO</h4>
         <div class="row">
           <% solo.each do |grid| %>
             <%= link_to edit_song_grid_path(@song, grid) do %>
-              <div class='grid col-lg-12'>
+              <div class='grid'>
                 <div class='grid-info'>
-                  <% if grid.location.present? %>
-                    <div class="list-group-item"><%= grid.location %></div>
-                  <% end %>
                   <% if grid.type.present? %>
                     <% case grid.type.id %>
                       <% when 1 %>
@@ -423,7 +420,9 @@
                     <% end %>
                   <% end %>
                   <% if grid.grid_location.present? %>
-                    <div class="list-group-item"><%= grid.grid_location %></div>
+                    <div class="list-group-item"><%= grid.grid_location %>
+                      <%= link_to "Remove", song_grid_path(@song, grid), method: :delete, data: { confirm: "Are you sure?" } %>
+                    </div>
                   <% end %>
                 </div>
               </div>
@@ -431,16 +430,14 @@
           <% end %>
         </div>
       <% end %>
+
       <% if outro.empty? == false %>
         <h4 class="title">OUTRO</h4>
         <div class="row">
           <% outro.each do |grid| %>
             <%= link_to edit_song_grid_path(@song, grid) do %>
-              <div class='grid col-lg-12'>
+              <div class='grid'>
                 <div class='grid-info'>
-                  <% if grid.location.present? %>
-                    <div class="list-group-item"><%= grid.location %></div>
-                  <% end %>
                   <% if grid.type.present? %>
                     <% case grid.type.id %>
                       <% when 1 %>
@@ -479,7 +476,9 @@
                     <% end %>
                   <% end %>
                   <% if grid.grid_location.present? %>
-                    <div class="list-group-item"><%= grid.grid_location %></div>
+                    <div class="list-group-item"><%= grid.grid_location %>
+                      <%= link_to "Remove", song_grid_path(@song, grid), method: :delete, data: { confirm: "Are you sure?" } %>
+                    </div>
                   <% end %>
                 </div>
               </div>
@@ -487,6 +486,7 @@
           <% end %>
         </div>
       <% end %>
+
       <% if @song.user == current_user %>
         <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat" %>
       <% end %>
