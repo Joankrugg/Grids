@@ -1,25 +1,23 @@
+<div class="login-sub-nav"></div>
 <div class="container">
-  <div class="song-page">
-    <%= link_to song_grids_path(@song) do  %>
-      <h3 class="title"><%= @song.title.capitalize %></h3>
-    <% end %>
-    <br>
-    <% if @song.youtube_link[8..15] == 'youtu.be' %>
-      <div class="video-responsive">
-        <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= @song.youtube_link[16..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    <% else %>
-      <div class="video-responsive">
-        <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= @song.youtube_link[32..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    <% end %>
-    <br>
-    <% if @song.user == current_user %>
-      <%= link_to 'edit song', edit_song_path(@song), class: "btn btn-flat" %>
-      <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat" %>
-      <%= link_to 'see grids', song_grids_path(@song), class: "btn btn-flat" %>
-      <p class="infos"><%= link_to 'destroy', song_path(@song), class: "call-to-action btn-medium btn last-item", method: :delete, data: { confirm: "Are you sure?" } %></p>
-    <% end %>
-  </div>
+  <%= link_to song_grids_path(@song), class: 'title' do  %>
+    <h3><%= @song.title.capitalize %></h3>
+  <% end %>
+  <br>
+  <% if @song.youtube_link[8..15] == 'youtu.be' %>
+    <div class="video-responsive">
+      <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= @song.youtube_link[16..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  <% else %>
+    <div class="video-responsive">
+      <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= @song.youtube_link[32..120] %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  <% end %>
+  <br>
+  <% if @song.user == current_user %>
+    <%= link_to 'edit song', edit_song_path(@song), class: "btn btn-flat log" %>
+    <%= link_to 'see grids', song_grids_path(@song), class: "btn btn-flat log" %>
+    <%= link_to 'destroy', song_path(@song), class: "call-to-action btn-medium btn last-item", method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
 </div>
 
