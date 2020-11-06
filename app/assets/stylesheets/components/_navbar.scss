@@ -18,10 +18,16 @@
 }
 
 .brand{
-  color: grey;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .brand:hover{
+  color: rgba(0,0,0,0.4);
+  font-size: 32px;
+  font-weight: bold;
   text-decoration: none;
   pointer: cursor;
 }

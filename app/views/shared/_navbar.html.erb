@@ -4,13 +4,15 @@
   <% end %>
 
   <%= link_to root_path, class: 'brand' do %>
-    <h1>Grid Maker</h1>
+    <h1>GRID MAKER</h1>
   <% end %>
   <!-- Button trigger modal -->
 
-  <button type="button" class="btn btn-primary move" data-toggle="modal" data-target="#move">
-    Move
-  </button>
+  <% unless user_signed_in? && current_user.photo.present? %>
+    <%= image_tag "logo_grid.png", class: "avatar",  data: { target: "#move", toggle: "modal"} %>
+  <% else %>
+    <%= image_tag current_user.photo, class: 'rounded-circle' , height: 45, width: 45, crop: :fit, data: { target: "#move", toggle: "modal"} %>
+  <% end %>
 
   <!-- Modal -->
   <div class="modal fade" id="move" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
