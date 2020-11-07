@@ -71,20 +71,25 @@
   text-align: center;
   border-radius: 3px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-right: 14px;
+  margin-left: 14px;
 }
 
 .user-story{
   background-color: white;
-  padding-top: 20px;
+  margin-top: 44px;
   padding-bottom: 20px;
+  padding-top: 20px;
   border-width: 2px;
-  text-align: center;
+  padding-left: 20px;
+  text-align: left;
   border-radius: 3px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #description{
   color: black;
+  font-size: 16px;
 }
 
 

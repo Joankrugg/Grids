@@ -9,29 +9,31 @@
       <% else %>
         <%= cl_image_tag "https://res.cloudinary.com/da2krghvd/image/upload/v1598020963/19_C2_B0_International_Jazz_Festival_of_Punta_del_Este_-_150111-2052-jikatu__2816077813707_29_drogug.jpg", class: "img-fluid profil-picture", height: 250, width: 250, crop: :fill %>
       <% end %>
-      <% if @user.description? %>
-        <p id="description"><%= @user.description %></p>
-      <% else%>
-        <p id="description"> Définis toi en une seule phrase </p>
-      <% end %>
+    </div>
+    <div class="col-sm-8">
       <div class="user-story">
-        <h5><%= @user.email %></h5>
-        <h4>Favorite genres</h4>
+        <h5>Favorite genres</h5>
         <% if @user.genres.any? %>
           <% @user.genres.each do |g| %>
-            <h5><%= g.name %></h5>
+            <p><%= g.name %></p>
           <% end %>
         <% end %>
-        <h4>Instruments joués</h4>
+        <h5>Instruments joués</h5>
         <% if @user.instruments.any? %>
           <% @user.instruments.each do |i| %>
-            <h5><%= i.name %></h5>
+            <p><%= i.name %></p>
           <% end %>
         <% end %>
       </div>
-      <hr class="d-sm-none">
     </div>
-    <div class="col-sm-8 songbook">
+  </div>
+  <% if @user.description? %>
+    <p id="description"><%= @user.description %></p>
+  <% else%>
+    <p id="description"> Définis toi en une seule phrase </p>
+  <% end %>
+  <div class="row">
+    <div class="col-sm-12">
       <div class="songs">
         <% if @user == current_user %>
           <%= link_to new_song_path do %>
@@ -40,32 +42,30 @@
             </div>
           <% end %>
         <% else %>
-          <h3 style="color: white">My Songbook</h3>
+          <h3 style="color: white">Songbook at <%= @user.email %></h3>
         <% end %>
       </div>
       <% if @user.songs.present? %>
         <% @user.songs.each do |s| %>
-          <%= link_to s do %>
-            <h4><%= s.title.capitalize %></h4><br>
+          <%= link_to s, class: 'song-title' do %>
+            <p><%= s.title.capitalize %></p><br>
           <% end %>
         <% end %>
       <% else %>
-        <p class="on-white">no song yet</p>
+        <p class="song-title">no song yet</p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <% if @user == current_user %>
+        <%= render 'form' %>
+        <h1 style="text-align: center">You can perform actions on your account</h1>
       <% end %>
     </div>
   </div>
 </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <% if @user == current_user %>
-          <h1 style="text-align: center">You can perform actions on your account</h1>
-          <%= render 'form' %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 
 

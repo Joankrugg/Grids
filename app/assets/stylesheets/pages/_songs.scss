@@ -1,3 +1,15 @@
 .song-page{
   padding-top: 60px;
 }
+
+.song-title{
+  text-align: center;
+  text-decoration: none;
+}
+
+.song-title:hover{
+  text-align: center;
+  text-decoration: none;
+  color: $brand;
+  cursor: pointer;
+}

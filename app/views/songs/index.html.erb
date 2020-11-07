@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <% @songs.each do |s| %>
-      <div class="col-lg-3 col-sm-4">
+      <div class="col-lg-3 col-sm-4 song-card">
         <%= link_to s do %>
           <% if s.youtube_link.present? %>
             <div class="card">
