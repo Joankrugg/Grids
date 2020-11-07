@@ -1,8 +1,5 @@
-<div>
-  Chatting with <%= conversation.with(current_user).name %>
-  <br>
-  <em><%= conversation.personal_messages.last.body.truncate(50) %></em>
-  <br>
-  <%= link_to 'View conversation', conversation_path(conversation) %>
-  <hr>
+<div class="container conversation">
+  <p class="conversation-content">Chatting with <%= conversation.with(current_user).name %></p>
+  <p class="conversation-content"><%= conversation.personal_messages.last.body.truncate(50) %></p>
+  <p class="conversation-content"><%= link_to 'View conversation', conversation_path(conversation) %></p>
 </div>
