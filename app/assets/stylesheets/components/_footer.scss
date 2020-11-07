@@ -1,8 +1,18 @@
-.jumbotron{
-  justify-content: space-between;
+.footer {
+  justify-content: center;
   background: white;
   position: fixed;
   width: 100%;
   z-index: 1000;
-  margin-bottom: 0px;
+  bottom: 0px;
+  padding-bottom: 20px;
+}
+
+.footer-item{
+  margin: auto;
+  padding-top: 20px;
+}
+
+.center{
+  margin: auto;
 }

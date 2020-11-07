@@ -1,3 +1,26 @@
-<div class="jumbotron text-center">
-  <p>Footer</p>
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-item">
+        <%= link_to users_path do %>
+          <i class="fas fa-users center">Users</i>
+        <% end %>
+      </div>
+      <div class="footer-item">
+        <%= link_to songs_path do %>
+          <i class="fas fa-guitar center">Songs</i>
+        <% end %>
+      </div>
+      <div class="footer-item">
+        <%= link_to conversations_path do %>
+          <i class="far fa-envelope center">Messages</i>
+        <% end %>
+      </div>
+      <div class="footer-item">
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt center">Out</i>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
