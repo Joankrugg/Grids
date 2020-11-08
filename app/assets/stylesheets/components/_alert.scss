@@ -1,13 +1,25 @@
 .alert {
+  z-index: 1001;
+  height: 64px;
+  text-align: center;
+  justify-content: center;
+  color: white;
   position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1000;
-  background-color: $brand;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+}
+.alert-info {
+  background-image: linear-gradient(-180deg, white, $brand);
+}
+.alert-warning {
+  background: black;
+}
+.message{
+  padding-top: 4px;
 }
 
-.alert-info{
+.advice{
+  text-align: center;
   color: white;
-  border-color: white;
-  opacity: 0.9;
 }

@@ -4,6 +4,7 @@
     <%= simple_form_for @song do |f| %>
       <div class="form-inputs">
         <div class="infos"><%= f.input :title %></div>
+        <div class="infos"><%= f.input :artist %></div>
         <div class="infos"><%= f.input :youtube_link %></div>
         <div class="infos">
           <%= f.button :submit, "Create Song", class: "btn btn-flat log"  %>

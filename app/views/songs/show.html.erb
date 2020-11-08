@@ -3,6 +3,9 @@
   <%= link_to song_grids_path(@song), class: 'page-title' do  %>
     <h3><%= @song.title.capitalize %></h3>
   <% end %>
+  <% if @song.artist.present?  %>
+    <%= @song.artist.name.capitalize %>
+  <% end %>
   <br>
   <% if @song.youtube_link[8..15] == 'youtu.be' %>
     <div class="video-responsive">
@@ -18,6 +21,8 @@
     <%= link_to 'edit song', edit_song_path(@song), class: "btn btn-flat log" %>
     <%= link_to 'see grids', song_grids_path(@song), class: "btn btn-flat log" %>
     <%= link_to 'destroy', song_path(@song), class: "call-to-action btn-medium btn last-item", method: :delete, data: { confirm: "Are you sure?" } %>
+  <% else %>
+    <div class="space"></div>
   <% end %>
 </div>
 
