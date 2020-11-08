@@ -12,32 +12,36 @@
     </div>
     <div class="col-sm-8">
       <div class="user-story">
-        <h5>Favorite genres</h5>
+        <div class="subtitle">Favorite genres</div>
         <% if @user.genres.any? %>
           <% @user.genres.each do |g| %>
-            <p><%= g.name %></p>
+            <div class='infos'><%= g.name %></div>
           <% end %>
         <% end %>
-        <h5>Instruments joués</h5>
+        <div class="subtitle">Instruments joués</div>
         <% if @user.instruments.any? %>
           <% @user.instruments.each do |i| %>
-            <p><%= i.name %></p>
+            <div class='infos'><%= i.name %></div>
           <% end %>
         <% end %>
       </div>
     </div>
   </div>
   <% if @user.description? %>
-    <p id="description"><%= @user.description %></p>
+    <div class="sentence">
+      <p id="user-description"><%= @user.description %></p>
+     </div>
   <% else%>
-    <p id="description"> Définis toi en une seule phrase </p>
+    <div class="sentence">
+      <p id="user-description"> Définis toi en une seule phrase </p>
+    </div>
   <% end %>
   <div class="row">
     <div class="col-sm-12">
       <div class="songs">
         <% if @user == current_user %>
           <%= link_to new_song_path do %>
-            <div class="btn btn-flat log">
+            <div class="btn btn-flat new-song">
               New song
             </div>
           <% end %>
@@ -47,12 +51,12 @@
       </div>
       <% if @user.songs.present? %>
         <% @user.songs.each do |s| %>
-          <%= link_to s, class: 'song-title' do %>
-            <p><%= s.title.capitalize %></p><br>
+          <%= link_to s do %>
+            <div class='song-title'><%= s.title.capitalize %></div>
           <% end %>
         <% end %>
       <% else %>
-        <p class="song-title">no song yet</p>
+        <div class="song-title">no song yet</div>
       <% end %>
     </div>
   </div>
