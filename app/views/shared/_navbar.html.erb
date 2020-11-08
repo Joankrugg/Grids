@@ -6,28 +6,20 @@
   <%= link_to root_path, class: 'brand' do %>
     <h1>GRID MAKER</h1>
   <% end %>
-  <!-- Button trigger modal -->
 
-  <% unless user_signed_in? && current_user.photo.present? %>
-    <%= image_tag "logo_grid.png", class: "avatar",  data: { target: "#move", toggle: "modal"} %>
+  <% if user_signed_in? && current_user.photo.present? %>
+    <%= link_to current_user do %>
+      <%= image_tag current_user.photo, class: 'rounded-circle' , height: 45, width: 45, crop: :fit %>
+    <% end %>
+  <% elsif user_signed_in? && current_user.photo == nil %>
+    <%= link_to current_user do %>
+      <%= image_tag "logo_grid.png", class: 'rounded-circle' , height: 45, width: 45, crop: :fit %>
+    <% end %>
   <% else %>
-    <%= image_tag current_user.photo, class: 'rounded-circle' , height: 45, width: 45, crop: :fit, data: { target: "#move", toggle: "modal"} %>
+    <%= link_to new_user_session_path do %>
+      <%= image_tag "logo_grid.png", class: 'rounded-circle' , height: 45, width: 45, crop: :fit %>
+    <% end %>
   <% end %>
-
-  <!-- Modal -->
-  <div class="modal fade" id="move" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <%= link_to "Profil", current_user, class: "modal-item btn btn-primary" %><br>
-          <%= link_to "Users", users_path, class: "modal-item btn btn-primary" %><br>
-          <%= link_to "Songs", songs_path, class: "modal-item btn btn-primary" %><br>
-          <%= link_to "Messages", conversations_path, class: "modal-item btn btn-primary" %><br>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "modal-item btn btn-primary" %>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 
