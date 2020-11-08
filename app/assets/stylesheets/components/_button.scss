@@ -16,3 +16,23 @@
 .move{
   color: white;
 }
+
+.connect{
+  color: white;
+  padding: 4px 16px;
+  border-radius: 20px;
+  background: $brand;
+  transition: background 0.3s ease;
+  opacity: 0.6;
+}
+
+.connect:hover{
+  color: white;
+  padding: 4px 16px;
+  border-radius: 20px;
+  background: $brand;
+  transition: background 0.3s ease;
+  opacity: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
