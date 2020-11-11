@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 
-  <%= link_to root_path, class: 'brand' do %>
-    <h1>GRID MAKER</h1>
+  <%= link_to root_path, id: 'brand' do %>
+    <div>GRID MAKER</div>
   <% end %>
 
   <% if user_signed_in? && current_user.photo.present? %>
