@@ -22,6 +22,7 @@
     <%= link_to 'see grids', song_grids_path(@song), class: "btn btn-flat log" %>
     <%= link_to 'destroy', song_path(@song), class: "call-to-action btn-medium btn last-item", method: :delete, data: { confirm: "Are you sure?" } %>
   <% else %>
+    <%= link_to 'see grids', song_grids_path(@song), class: "btn btn-flat log" %>
     <div class="space"></div>
   <% end %>
 </div>

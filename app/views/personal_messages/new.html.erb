@@ -4,7 +4,11 @@
 <h1 style="text-align: center">New message to <%= @receiver.name %></h1>
 
 <%= form_for @personal_message do |f| %>
-  <%= hidden_field_tag 'receiver_id', @receiver.id %>
-    <%= f.text_area :body, , class: 'chat-form' %>
-  <%= f.submit %>
+  <div class="container">
+    <%= hidden_field_tag 'receiver_id', @receiver.id %>
+    <%= f.text_area :body, class: 'conversation-input' %>
+  </div>
+  <div class="call-to-action send">
+    <%= f.submit 'Send message', class: 'btn btn-flat' %>
+  </div>
 <% end %>
