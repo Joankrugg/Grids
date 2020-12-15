@@ -859,9 +859,10 @@
 
     <% if @song.user == current_user %>
       <div class="call-to-action">
-        <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat bottom" %>
+        <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat" %>
       </div>
     <% end %>
   </div>
 </div>
+<div class="sub-footer"></div>
 
