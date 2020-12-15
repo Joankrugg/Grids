@@ -2,6 +2,7 @@
 <div class="container">
   <%= link_to song_path(@song), class: "title" do %>
     <h3><%= @song.title.capitalize %></h3>
+    <p>by <%= @song.user.email %></p>
   <% end %>
   <% intro = [] %>
   <% verse = [] %>
@@ -38,9 +39,9 @@
         <% outro << grid %>
       <% end %>
     <% end %>
-    <% if intro.empty? && @song.user == current_user %>
+    <% if intro.empty? %>
     <% elsif intro.empty? == false && @song.user == current_user %>
-      <%= link_to 'INTRO', new_song_grid_path(@song), class: "btn btn-flat log" %>
+      <%= link_to 'INTRO', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
         <% intro.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -142,9 +143,9 @@
       </div>
     <% end %>
 
-    <% if verse.empty? && @song.user == current_user %>
+    <% if verse.empty? %>
     <% elsif verse.empty? == false && @song.user == current_user %>
-      <%= link_to 'VERSE', new_song_grid_path(@song), class: "btn btn-flat log" %>
+      <%= link_to 'VERSE', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
         <% verse.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -244,9 +245,9 @@
       </div>
     <% end %>
 
-    <% if prechorus.empty? && @song.user == current_user %>
+    <% if prechorus.empty? %>
     <% elsif prechorus.empty? == false && @song.user == current_user %>
-      <%= link_to 'PRECHORUS', new_song_grid_path(@song), class: "btn btn-flat log" %>
+      <%= link_to 'PRECHORUS', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
         <% prechorus.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -346,9 +347,9 @@
       </div>
     <% end %>
 
-    <% if chorus.empty? && @song.user == current_user %>
+    <% if chorus.empty? %>
     <% elsif chorus.empty? == false && @song.user == current_user %>
-      <%= link_to 'CHORUS', new_song_grid_path(@song), class: "btn btn-flat log" %>
+      <%= link_to 'CHORUS', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
         <% chorus.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -448,9 +449,9 @@
       </div>
     <% end %>
 
-    <% if bridge.empty? && @song.user == current_user %>
+    <% if bridge.empty? %>
     <% elsif bridge.empty? == false && @song.user == current_user %>
-      <%= link_to 'BRIDGE', new_song_grid_path(@song), class: "btn btn-flat log" %>
+      <%= link_to 'BRIDGE', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
         <% bridge.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -549,9 +550,10 @@
         <% end %>
       </div>
     <% end %>
-    <% if casse.empty? && @song.user == current_user %>
+
+    <% if casse.empty? %>
     <% elsif casse.empty? == false && @song.user == current_user %>
-      <%= link_to 'BREAK', new_song_grid_path(@song), class: "btn btn-flat log" %>
+      <%= link_to 'BREAK', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
         <% casse.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -651,9 +653,9 @@
       </div>
     <% end %>
 
-    <% if solo.empty? && @song.user == current_user %>
+    <% if solo.empty? %>
     <% elsif solo.empty? == false && @song.user == current_user %>
-      <%= link_to 'SOLO', new_song_grid_path(@song), class: "btn btn-flat log" %>
+      <%= link_to 'SOLO', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
         <% solo.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -753,9 +755,9 @@
       </div>
     <% end %>
 
-    <% if outro.empty? && @song.user == current_user %>
+    <% if outro.empty? %>
     <% elsif outro.empty? == false && @song.user == current_user %>
-      <%= link_to 'OUTRO', new_song_grid_path(@song), class: "btn btn-flat log" %>
+      <%= link_to 'OUTRO', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
         <% outro.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -808,7 +810,7 @@
       </div>
     <% elsif outro.empty? == false && @song.user || current_user %>
       <h4 class="title">OUTRO</h4>
-      <div class="row">
+      <div class="row bottom">
         <% outro.each do |grid| %>
           <div class='grid'>
             <div class='grid-info'>
@@ -856,7 +858,9 @@
     <% end %>
 
     <% if @song.user == current_user %>
-      <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat log" %>
+      <div class="call-to-action">
+        <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat bottom" %>
+      </div>
     <% end %>
   </div>
 </div>
