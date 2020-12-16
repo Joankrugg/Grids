@@ -4,46 +4,46 @@
     <h3><%= @song.title.capitalize %></h3>
     <p>by <%= @song.user.email %></p>
   <% end %>
-  <% intro = [] %>
-  <% verse = [] %>
-  <% prechorus = [] %>
-  <% chorus = [] %>
-  <% bridge = [] %>
-  <% casse = [] %>
-  <% solo = [] %>
-  <% outro = [] %>
+  <% first_section = [] %>
+  <% second_section = [] %>
+  <% third_section = [] %>
+  <% fourth_section = [] %>
+  <% fifth_section = [] %>
+  <% sixth_section = [] %>
+  <% seventh_section = [] %>
+  <% eighth_section = [] %>
   <% b = @song.grids.sort_by { |grid| grid[:grid_location] } %>
     <% b.each do |grid| %>
-      <% if grid.section.id == 1 %>
-        <% intro << grid %>
+      <% if grid.location == 1 %>
+        <% first_section << grid %>
       <% end %>
-      <% if grid.section.id == 2 %>
-        <% verse << grid %>
+      <% if grid.location == 2 %>
+        <% second_section << grid %>
       <% end %>
-      <% if grid.section.id == 3 %>
-        <% prechorus << grid %>
+      <% if grid.location == 3 %>
+        <% third_section << grid %>
       <% end %>
-      <% if grid.section.id == 4 %>
-        <% chorus << grid %>
+      <% if grid.location == 4 %>
+        <% fourth_section << grid %>
       <% end %>
-      <% if grid.section.id == 5 %>
-        <% bridge << grid %>
+      <% if grid.location == 5 %>
+        <% fifth_section << grid %>
       <% end %>
-      <% if grid.section.id == 6 %>
-        <% casse << grid %>
+      <% if grid.location == 6 %>
+        <% sixth_section << grid %>
       <% end %>
-      <% if grid.section.id == 7 %>
-        <% solo << grid %>
+      <% if grid.location == 7 %>
+        <% seventh_section << grid %>
       <% end %>
-      <% if grid.section.id == 8 %>
-        <% outro << grid %>
+      <% if grid.location == 8 %>
+        <% eighth_section << grid %>
       <% end %>
     <% end %>
-    <% if intro.empty? %>
-    <% elsif intro.empty? == false && @song.user == current_user %>
+    <% if first_section.empty? %>
+    <% elsif first_section.empty? == false && @song.user == current_user %>
       <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
-        <% intro.each do |grid| %>
+        <% first_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
             <div class='grid'>
               <div class='grid-info'>
@@ -94,10 +94,10 @@
           <% end %>
         <% end %>
       </div>
-    <% elsif intro.empty? == false && @song.user || current_user %>
+    <% elsif first_section.empty? == false && @song.user || current_user %>
       <h4 class="title">First Section</h4>
       <div class="row">
-        <% intro.each do |grid| %>
+        <% first_section.each do |grid| %>
           <div class='grid'>
             <div class='grid-info'>
               <% if grid.type.present? %>
@@ -143,11 +143,11 @@
       </div>
     <% end %>
 
-    <% if verse.empty? %>
-    <% elsif verse.empty? == false && @song.user == current_user %>
+    <% if second_section.empty? %>
+    <% elsif second_section.empty? == false && @song.user == current_user %>
       <%= link_to 'Second Section', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
-        <% verse.each do |grid| %>
+        <% second_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
             <div class='grid'>
               <div class='grid-info'>
@@ -196,10 +196,10 @@
           <% end %>
         <% end %>
       </div>
-    <% elsif verse.empty? == false && @song.user || current_user %>
+    <% elsif second_section.empty? == false && @song.user || current_user %>
       <h4 class="title">Second Section</h4>
       <div class="row">
-        <% verse.each do |grid| %>
+        <% second_section.each do |grid| %>
           <div class='grid'>
             <div class='grid-info'>
               <% if grid.type.present? %>
@@ -245,11 +245,11 @@
       </div>
     <% end %>
 
-    <% if prechorus.empty? %>
-    <% elsif prechorus.empty? == false && @song.user == current_user %>
+    <% if third_section.empty? %>
+    <% elsif third_section.empty? == false && @song.user == current_user %>
       <%= link_to 'Third Section', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
-        <% prechorus.each do |grid| %>
+        <% third_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
             <div class='grid'>
               <div class='grid-info'>
@@ -298,10 +298,10 @@
           <% end %>
         <% end %>
       </div>
-    <% elsif prechorus.empty? == false && @song.user || current_user %>
+    <% elsif third_section.empty? == false && @song.user || current_user %>
       <h4 class="title">Third Section</h4>
       <div class="row">
-        <% prechorus.each do |grid| %>
+        <% third_section.each do |grid| %>
           <div class='grid'>
             <div class='grid-info'>
               <% if grid.type.present? %>
@@ -347,11 +347,11 @@
       </div>
     <% end %>
 
-    <% if chorus.empty? %>
-    <% elsif chorus.empty? == false && @song.user == current_user %>
+    <% if fourth_section.empty? %>
+    <% elsif fourth_section.empty? == false && @song.user == current_user %>
       <%= link_to 'Fourth Section', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
-        <% chorus.each do |grid| %>
+        <% fourth_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
             <div class='grid'>
               <div class='grid-info'>
@@ -400,10 +400,10 @@
           <% end %>
         <% end %>
       </div>
-    <% elsif chorus.empty? == false && @song.user || current_user %>
+    <% elsif fourth_section.empty? == false && @song.user || current_user %>
       <h4 class="title">Fourth Section</h4>
       <div class="row">
-        <% chorus.each do |grid| %>
+        <% fourth_section.each do |grid| %>
           <div class='grid'>
             <div class='grid-info'>
               <% if grid.type.present? %>
@@ -449,11 +449,11 @@
       </div>
     <% end %>
 
-    <% if bridge.empty? %>
-    <% elsif bridge.empty? == false && @song.user == current_user %>
+    <% if fifth_section.empty? %>
+    <% elsif fifth_section.empty? == false && @song.user == current_user %>
       <%= link_to 'Fifth Section', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
-        <% bridge.each do |grid| %>
+        <% fifth_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
             <div class='grid'>
               <div class='grid-info'>
@@ -502,10 +502,10 @@
           <% end %>
         <% end %>
       </div>
-    <% elsif bridge.empty? == false && @song.user || current_user %>
+    <% elsif fifth_section.empty? == false && @song.user || current_user %>
       <h4 class="title">Fifth Section</h4>
       <div class="row">
-        <% bridge.each do |grid| %>
+        <% fifth_section.each do |grid| %>
           <div class='grid'>
             <div class='grid-info'>
               <% if grid.type.present? %>
@@ -551,11 +551,11 @@
       </div>
     <% end %>
 
-    <% if casse.empty? %>
-    <% elsif casse.empty? == false && @song.user == current_user %>
+    <% if sixth_section.empty? %>
+    <% elsif sixth_section.empty? == false && @song.user == current_user %>
       <%= link_to 'Sixth Section', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
-        <% casse.each do |grid| %>
+        <% sixth_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
             <div class='grid'>
               <div class='grid-info'>
@@ -604,10 +604,10 @@
           <% end %>
         <% end %>
       </div>
-    <% elsif casse.empty? == false && @song.user || current_user %>
+    <% elsif sixth_section.empty? == false && @song.user || current_user %>
       <h4 class="title">Sixth Section</h4>
       <div class="row">
-        <% casse.each do |grid| %>
+        <% sixth_section.each do |grid| %>
           <div class='grid'>
             <div class='grid-info'>
               <% if grid.type.present? %>
@@ -653,11 +653,11 @@
       </div>
     <% end %>
 
-    <% if solo.empty? %>
-    <% elsif solo.empty? == false && @song.user == current_user %>
+    <% if seventh_section.empty? %>
+    <% elsif seventh_section.empty? == false && @song.user == current_user %>
       <%= link_to 'Seventh Section', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
-        <% solo.each do |grid| %>
+        <% seventh_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
             <div class='grid'>
               <div class='grid-info'>
@@ -706,10 +706,10 @@
           <% end %>
         <% end %>
       </div>
-    <% elsif solo.empty? == false && @song.user || current_user %>
+    <% elsif seventh_section.empty? == false && @song.user || current_user %>
       <h4 class="title">Seventh Section</h4>
       <div class="row">
-        <% solo.each do |grid| %>
+        <% seventh_section.each do |grid| %>
           <div class='grid'>
             <div class='grid-info'>
               <% if grid.type.present? %>
@@ -755,11 +755,11 @@
       </div>
     <% end %>
 
-    <% if outro.empty? %>
-    <% elsif outro.empty? == false && @song.user == current_user %>
+    <% if eighth_section.empty? %>
+    <% elsif eighth_section.empty? == false && @song.user == current_user %>
       <%= link_to 'Eighth Section', new_song_grid_path(@song), class: "btn call-to-action" %>
       <div class="row">
-        <% outro.each do |grid| %>
+        <% eighth_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
             <div class='grid'>
               <div class='grid-info'>
@@ -808,10 +808,10 @@
           <% end %>
         <% end %>
       </div>
-    <% elsif outro.empty? == false && @song.user || current_user %>
+    <% elsif eighth_section.empty? == false && @song.user || current_user %>
       <h4 class="title">Eighth Section</h4>
       <div class="row bottom">
-        <% outro.each do |grid| %>
+        <% eighth_section.each do |grid| %>
           <div class='grid'>
             <div class='grid-info'>
               <% if grid.type.present? %>

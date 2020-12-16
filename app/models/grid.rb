@@ -11,6 +11,7 @@ class Grid < ApplicationRecord
     belongs_to :third_musical_scale, optional: true
     belongs_to :fourth_musical_note, optional: true
     belongs_to :fourth_musical_scale, optional: true
+    validates :location, presence: true
 
 end
 
