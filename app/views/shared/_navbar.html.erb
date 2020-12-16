@@ -8,9 +8,9 @@
     <%= link_to current_user do %>
       <%= image_tag current_user.photo, class: 'rounded-circle' , height: 45, width: 45, crop: :fit %>
     <% end %>
-  <% elsif user_signed_in? && current_user.photo == nil %>
+  <% elsif user_signed_in? %>
     <%= link_to current_user do %>
-      <%= image_tag "logo_grid.png", class: 'rounded-circle' , height: 45, width: 45, crop: :fit %>
+      <%= image_tag "logo.png", class: 'rounded-circle' , height: 45, width: 45, crop: :fit %>
     <% end %>
   <% else %>
     <%= link_to 'Connect', new_user_session_path, class: 'connect'  %>

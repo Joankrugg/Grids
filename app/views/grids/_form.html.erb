@@ -9,17 +9,21 @@
   </div>
   <%= simple_form_for [@song, @grid] do |f| %>
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-sm-6 col-lg-6">
+        <%= f.input :location, collection: 1..8 %>
+      </div>
+      <div class="col-sm-6 col-lg-6">
         <%= f.association :section, required: false %>
       </div>
+
     </div>
 
     <div class="row">
       <div class="col-sm-6 col-lg-6">
-        <%= f.association :type, required: false %>
+        <%= f.input :grid_location, collection: 1..32 %>
       </div>
       <div class="col-sm-6 col-lg-6">
-        <%= f.input :grid_location, collection: 1..8 %>
+        <%= f.association :type, required: false %>
       </div>
     </div>
     <div class="row">
