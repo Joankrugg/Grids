@@ -4,6 +4,12 @@
     <h3><%= @song.title.capitalize %></h3>
     <p>by <%= @song.user.email %></p>
   <% end %>
+  <% if @song.user == current_user %>
+    <div class="call-to-action">
+      <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat" %>
+    </div>
+  <% end %>
+
   <% first_section = [] %>
   <% second_section = [] %>
   <% third_section = [] %>
@@ -41,7 +47,28 @@
     <% end %>
     <% if first_section.empty? %>
     <% elsif first_section.empty? == false && @song.user == current_user %>
-      <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+      <% values = first_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% first_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -95,7 +122,28 @@
         <% end %>
       </div>
     <% elsif first_section.empty? == false && @song.user || current_user %>
-      <h4 class="title">First Section</h4>
+      <% values = first_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% first_section.each do |grid| %>
           <div class='grid'>
@@ -145,7 +193,28 @@
 
     <% if second_section.empty? %>
     <% elsif second_section.empty? == false && @song.user == current_user %>
-      <%= link_to 'Second Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+      <% values = second_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% second_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -197,7 +266,28 @@
         <% end %>
       </div>
     <% elsif second_section.empty? == false && @song.user || current_user %>
-      <h4 class="title">Second Section</h4>
+      <% values = second_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% second_section.each do |grid| %>
           <div class='grid'>
@@ -247,7 +337,28 @@
 
     <% if third_section.empty? %>
     <% elsif third_section.empty? == false && @song.user == current_user %>
-      <%= link_to 'Third Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+      <% values = third_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% third_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -299,7 +410,28 @@
         <% end %>
       </div>
     <% elsif third_section.empty? == false && @song.user || current_user %>
-      <h4 class="title">Third Section</h4>
+      <% values = third_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% third_section.each do |grid| %>
           <div class='grid'>
@@ -349,7 +481,28 @@
 
     <% if fourth_section.empty? %>
     <% elsif fourth_section.empty? == false && @song.user == current_user %>
-      <%= link_to 'Fourth Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+      <% values = fourth_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% fourth_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -401,7 +554,28 @@
         <% end %>
       </div>
     <% elsif fourth_section.empty? == false && @song.user || current_user %>
-      <h4 class="title">Fourth Section</h4>
+      <% values = fourth_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% fourth_section.each do |grid| %>
           <div class='grid'>
@@ -451,7 +625,28 @@
 
     <% if fifth_section.empty? %>
     <% elsif fifth_section.empty? == false && @song.user == current_user %>
-      <%= link_to 'Fifth Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+      <% values = fifth_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% fifth_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -503,7 +698,28 @@
         <% end %>
       </div>
     <% elsif fifth_section.empty? == false && @song.user || current_user %>
-      <h4 class="title">Fifth Section</h4>
+      <% values = fifth_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% fifth_section.each do |grid| %>
           <div class='grid'>
@@ -553,7 +769,28 @@
 
     <% if sixth_section.empty? %>
     <% elsif sixth_section.empty? == false && @song.user == current_user %>
-      <%= link_to 'Sixth Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+      <% values = sixth_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% sixth_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -605,7 +842,28 @@
         <% end %>
       </div>
     <% elsif sixth_section.empty? == false && @song.user || current_user %>
-      <h4 class="title">Sixth Section</h4>
+      <% values = sixth_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% sixth_section.each do |grid| %>
           <div class='grid'>
@@ -655,7 +913,28 @@
 
     <% if seventh_section.empty? %>
     <% elsif seventh_section.empty? == false && @song.user == current_user %>
-      <%= link_to 'Seventh Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+      <% values = seventh_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% seventh_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -707,7 +986,28 @@
         <% end %>
       </div>
     <% elsif seventh_section.empty? == false && @song.user || current_user %>
-      <h4 class="title">Seventh Section</h4>
+      <% values = seventh_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% seventh_section.each do |grid| %>
           <div class='grid'>
@@ -757,7 +1057,28 @@
 
     <% if eighth_section.empty? %>
     <% elsif eighth_section.empty? == false && @song.user == current_user %>
-      <%= link_to 'Eighth Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+      <% values = eighth_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row">
         <% eighth_section.each do |grid| %>
           <%= link_to edit_song_grid_path(@song, grid) do %>
@@ -809,7 +1130,28 @@
         <% end %>
       </div>
     <% elsif eighth_section.empty? == false && @song.user || current_user %>
-      <h4 class="title">Eighth Section</h4>
+      <% values = eighth_section.map{|p| p[:section_id]}.compact  %>
+        <% if values == [] %>
+          <%= link_to 'First Section', new_song_grid_path(@song), class: "btn call-to-action" %>
+        <% else %>
+          <% case values.first %>
+            <% when 1 %>
+              <%= link_to "INTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 2 %>
+              <%= link_to "VERSE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 3 %>
+              <%= link_to "PRECHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 4 %>
+              <%= link_to "CHORUS", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 5 %>
+              <%= link_to "BRIDGE", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 6 %>
+              <%= link_to "BREAK", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 7 %>
+              <%= link_to "OUTRO", new_song_grid_path(@song), class: "btn call-to-action" %>
+            <% when 8 %>
+          <% end %>
+        <% end %>
       <div class="row bottom">
         <% eighth_section.each do |grid| %>
           <div class='grid'>
@@ -854,12 +1196,6 @@
             </div>
           </div>
         <% end %>
-      </div>
-    <% end %>
-
-    <% if @song.user == current_user %>
-      <div class="call-to-action">
-        <%= link_to 'create a grid', new_song_grid_path(@song), class: "btn btn-flat" %>
       </div>
     <% end %>
   </div>
